@@ -6,9 +6,11 @@ const mongoose = require("mongoose");
 const session = require('express-session');
 const passportLocalMongoose = require("passport-local-mongoose");
 const passport = require('passport');
+const flash = require("connect-flash");
 
 const url = process.env.URL;
 const app = express();
+app.use(flash());
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -105,7 +107,7 @@ app.get('/login-simple', function (req, res) {
   }
   
   app.post("/login-simple", usernameToLowerCase, passport.authenticate("local", {
-    failureRedirect: "/login-fail", failureFlash: false
+    failureRedirect: "/login-fail", failureFlash: true
   }), function (req, res) {
     try {
         res.redirect("/admin");
@@ -116,6 +118,8 @@ app.get('/login-simple', function (req, res) {
   });
   
   app.get("/login-fail", function (req, res) {
+    flag = 0;
+    req.flash('info', 'Invalid username or password');
     res.redirect('/login-simple')
   })
 

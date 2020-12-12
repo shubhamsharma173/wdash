@@ -6,11 +6,14 @@ $(document).ready(function() {
 	$('#datable_1').DataTable({
 		responsive: true,
 		autoWidth: false,
+		searching: false,
+		pagingType: "numbers",
+		"order": [[ 1, "asc" ]],
 		language: { search: "",
 		searchPlaceholder: "Search",
-		sLengthMenu: "_MENU_items"
-
+		sLengthMenu: "_MENU_items",
 		}
+		
 	});
     $('#datable_2').DataTable({ 
 		autoWidth: false,
