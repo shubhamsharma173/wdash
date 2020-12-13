@@ -52,9 +52,22 @@ passport.deserializeUser((user, cb) => {
 });
 
 app.get("/", function (req, res) {
-    res.redirect("/login-simple");
+    if (req.isAuthenticated()) {
+        res.redirect("admin");
+      }else {
+        res.render("home");
+    }
   });
 
+  app.get("/admin",function(req,res){
+    if (req.isAuthenticated()) {
+        res.render("admin");
+      }else {
+        res.redirect("/login-simple");
+    }
+  })
+
+  let flag=0;
   //login page get request..
 app.get('/login-simple', function (req, res) {
     if (req.isAuthenticated()) {
@@ -106,6 +119,22 @@ app.get('/login-simple', function (req, res) {
     next();
   }
   
+//   app.post("/login-simple", function (req, res) {
+//     try {
+//         console.log(req.body);
+//         var authenticate = User.authenticate();
+//         authenticate(req.body.username, req.body.password, function(err, result) {
+//             if (err) { console.log(err); }else{
+//                 console.log(result);
+//                 res.redirect("/admin");
+//             }
+//         });
+//     } catch (error) {
+//       console.log(error);
+//     }
+    
+//   });
+
   app.post("/login-simple", usernameToLowerCase, passport.authenticate("local", {
     failureRedirect: "/login-fail", failureFlash: true
   }), function (req, res) {
