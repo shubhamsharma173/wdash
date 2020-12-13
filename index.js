@@ -89,9 +89,9 @@ app.get("/", function (req, res) {
   })
   app.get("/forgotPass",function(req,res){
     if (req.isAuthenticated()) {
-        res.render("forgotPass");
+        res.redirect("/admin");
       }else {
-        res.redirect("/login-simple");
+        res.render("forgotPass");
     }
   })
 
