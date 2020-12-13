@@ -66,6 +66,27 @@ app.get("/", function (req, res) {
         res.redirect("/login-simple");
     }
   })
+  app.get("/doctor",function(req,res){
+    if (req.isAuthenticated()) {
+        res.render("doctorList");
+      }else {
+        res.redirect("/login-simple");
+    }
+  })
+  app.get("/patient",function(req,res){
+    if (req.isAuthenticated()) {
+        res.render("patientList");
+      }else {
+        res.redirect("/login-simple");
+    }
+  })
+  app.get("/chats",function(req,res){
+    if (req.isAuthenticated()) {
+        res.render("chats");
+      }else {
+        res.redirect("/login-simple");
+    }
+  })
 
   let flag=0;
   //login page get request..
