@@ -87,6 +87,13 @@ app.get("/", function (req, res) {
         res.redirect("/login-simple");
     }
   })
+  app.get("/forgotPass",function(req,res){
+    if (req.isAuthenticated()) {
+        res.render("forgotPass");
+      }else {
+        res.redirect("/login-simple");
+    }
+  })
 
   let flag=0;
   //login page get request..
