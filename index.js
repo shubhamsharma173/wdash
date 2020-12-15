@@ -97,6 +97,20 @@ app.get("/", function (req, res) {
 
   let flag=0;
   //login page get request..
+app.get('/login-member', function (req, res) {
+    if (req.isAuthenticated()) {
+        res.redirect("/patient");
+      }else {
+        res.render("login-member");
+    }
+  });
+app.get('/login-supplier', function (req, res) {
+    if (req.isAuthenticated()) {
+        res.redirect("/doctor");
+      }else {
+        res.render("login-supplier");
+    }
+  });
 app.get('/login-simple', function (req, res) {
     if (req.isAuthenticated()) {
         res.redirect("/admin");
@@ -163,6 +177,26 @@ app.get('/login-simple', function (req, res) {
     
 //   });
 
+  app.post("/login-member", usernameToLowerCase, passport.authenticate("local", {
+    failureRedirect: "/login-fail", failureFlash: true
+  }), function (req, res) {
+    try {
+        res.redirect("/patient");
+    } catch (error) {
+      console.log(error);
+    }
+    
+  });
+  app.post("/login-supplier", usernameToLowerCase, passport.authenticate("local", {
+    failureRedirect: "/login-fail", failureFlash: true
+  }), function (req, res) {
+    try {
+        res.redirect("/doctor");
+    } catch (error) {
+      console.log(error);
+    }
+    
+  });
   app.post("/login-simple", usernameToLowerCase, passport.authenticate("local", {
     failureRedirect: "/login-fail", failureFlash: true
   }), function (req, res) {
