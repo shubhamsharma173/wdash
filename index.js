@@ -35,6 +35,7 @@ app.use(session({
   const userSchema = new mongoose.Schema({
     fullName: String,
     username: String,
+    mode: String,
     salt: String,
     hash: String
   }, { collection: "users" });
@@ -55,7 +56,7 @@ app.get("/", function (req, res) {
     if (req.isAuthenticated()) {
         res.redirect("admin");
       }else {
-        res.render("home");
+        res.render("home",{message: req.flash('info')});
     }
   });
 
@@ -63,83 +64,71 @@ app.get("/", function (req, res) {
     if (req.isAuthenticated()) {
         res.render("admin");
       }else {
-        res.redirect("/login-simple");
+        res.redirect("/");
     }
   })
   app.get("/doctor",function(req,res){
     if (req.isAuthenticated()) {
-        res.render("doctorList");
+        res.render("doctor");
       }else {
-        res.redirect("/login-simple");
+        res.redirect("/");
     }
   })
   app.get("/patient",function(req,res){
     if (req.isAuthenticated()) {
-        res.render("patientList");
+        res.render("patient");
       }else {
-        res.redirect("/login-simple");
-    }
-  })
-  app.get("/chats",function(req,res){
-    if (req.isAuthenticated()) {
-        res.render("chats");
-      }else {
-        res.redirect("/login-simple");
-    }
-  })
-  app.get("/forgotPass",function(req,res){
-    if (req.isAuthenticated()) {
-        res.redirect("/admin");
-      }else {
-        res.render("forgotPass");
+        res.redirect("/");
     }
   })
 
   let flag=0;
   //login page get request..
-app.get('/login-member', function (req, res) {
-    if (req.isAuthenticated()) {
-        res.redirect("/patient");
-      }else {
-        res.render("login-member");
-    }
-  });
-app.get('/login-supplier', function (req, res) {
-    if (req.isAuthenticated()) {
-        res.redirect("/doctor");
-      }else {
-        res.render("login-supplier");
-    }
-  });
-app.get('/login-simple', function (req, res) {
+app.get('/login/:mode', function (req, res) {
     if (req.isAuthenticated()) {
         res.redirect("/admin");
       }else {
-        res.render("login-simple");
+          if(req.params.mode==="admin"){
+            res.render("login",{ mode:"admin" });
+          }
+          if(req.params.mode==="supplier"){
+            res.render("login",{ mode:"supplier" });
+          }
+          if(req.params.mode==="member"){
+            res.render("login",{ mode:"member" });
+          }
     }
   });
   
   
   //register page get request..
-  app.get("/register", function (req, res) {
+  app.get("/register/:mode", function (req, res) {
     if (req.isAuthenticated()) {
         res.redirect("/admin");
     } else {
-        res.render("register");
+        if(req.params.mode==="admin"){
+            res.render("register",{ mode:"admin", message:req.flash('error') });
+          }
+          if(req.params.mode==="supplier"){
+            res.render("register",{ mode:"supplier", message:req.flash('error') });
+          }
+          if(req.params.mode==="member"){
+            res.render("register",{ mode:"member", message:req.flash('error') });
+          }
     }
   });
   
   //register page post request..
-  app.post("/register", function (req, res) {
+  app.post("/register/:mode", function (req, res) {
     User.register({ username: req.body.username.toLowerCase() }, req.body.password, function (err, user) {
       if (err) {
-        console.log(err.message);
-        flag = 3;
-        res.redirect("/register");
+        req.flash('error', err.message);
+        res.redirect("/register/"+req.params.mode);
       } else {
         passport.authenticate("local")(req, res, function () {
           User.findOneAndUpdate({ username: req.user.username }, {
-            fullName: req.body.name
+            fullName: req.body.name,
+            mode: req.params.mode
           }, null, function (err, docs) {
             if (err) {
               console.log(err)
@@ -160,48 +149,24 @@ app.get('/login-simple', function (req, res) {
     req.body.username = req.body.username.toLowerCase();
     next();
   }
-  
-//   app.post("/login-simple", function (req, res) {
-//     try {
-//         console.log(req.body);
-//         var authenticate = User.authenticate();
-//         authenticate(req.body.username, req.body.password, function(err, result) {
-//             if (err) { console.log(err); }else{
-//                 console.log(result);
-//                 res.redirect("/admin");
-//             }
-//         });
-//     } catch (error) {
-//       console.log(error);
-//     }
-    
-//   });
 
-  app.post("/login-member", usernameToLowerCase, passport.authenticate("local", {
+  app.post("/login/:mode", usernameToLowerCase, passport.authenticate("local", {
     failureRedirect: "/login-fail", failureFlash: true
   }), function (req, res) {
     try {
-        res.redirect("/patient");
-    } catch (error) {
-      console.log(error);
-    }
-    
-  });
-  app.post("/login-supplier", usernameToLowerCase, passport.authenticate("local", {
-    failureRedirect: "/login-fail", failureFlash: true
-  }), function (req, res) {
-    try {
-        res.redirect("/doctor");
-    } catch (error) {
-      console.log(error);
-    }
-    
-  });
-  app.post("/login-simple", usernameToLowerCase, passport.authenticate("local", {
-    failureRedirect: "/login-fail", failureFlash: true
-  }), function (req, res) {
-    try {
-        res.redirect("/admin");
+            User.findOne({ username : req.body.username.toLowerCase()},function(err,data){
+                if(err){console.log(err);}else{
+                    if(data.mode==="admin"){
+                        res.redirect("/admin");
+                    }
+                    if(data.mode==="member"){
+                        res.redirect("/patient");
+                    }
+                    if(data.mode==="supplier"){
+                        res.redirect("/doctor");
+                    }
+                }
+            })
     } catch (error) {
       console.log(error);
     }
@@ -209,15 +174,14 @@ app.get('/login-simple', function (req, res) {
   });
   
   app.get("/login-fail", function (req, res) {
-    flag = 0;
-    req.flash('info', 'Invalid username or password');
-    res.redirect('/login-simple')
+    req.flash('info', 'Invalid username or password, Please try again!');
+    res.redirect('/')
   })
 
   //logout request..
   app.get("/logout", function (req, res) {
         req.logout();
-        res.redirect("/login-simple");
+        res.redirect("/");
   });
 
   const PORT = process.env.PORT || 5001;

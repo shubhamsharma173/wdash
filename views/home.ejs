@@ -50,6 +50,11 @@
                     <div class="col-xl-12 pa-0">
                         <div class="auth-form-wrap pt-xl-0 pt-70">
                             <div class="auth-form w-xl-25 w-sm-50 w-100">
+                                <p style="position: relative;left:10%;top:-30px;color:white;  font-family: Helvetica, Arial, sans-serif;  font-size: 13px;  font-weight: bold;  line-height: 20px;  text-shadow: 1px 1px rgba(250,250,250,.3);">
+										<% if (message.length>0) { %>
+										<%= message %>
+										<% } %>
+									</p>
                                 <div class="theBox">
                                     <div>
                                         <div style="position: relative;left:10%;top:-30px;background: #f82824;
@@ -78,7 +83,7 @@
                                             opacity: 0.8;">Choose you Login mode!</span>
                                         </div>
                                     </div>
-                                    <a href="/login-member"> <div style="background: #f82824;
+                                    <a href="/login/member"> <div style="background: #f82824;
                                         margin-bottom: 10%;
                                     border-radius: 4px;width: 70%;height: 16%;left: 15%;position: relative;">
                                         <div style="font-family: Nunito;
@@ -91,7 +96,7 @@
                                         padding-top: 4%;
                                         color: #FFFFFF;">Login in as a Member</div> </a>
                                     </div>
-                                    <a href="/login-supplier"> <div style="background: #f82824;
+                                    <a href="/login/supplier"> <div style="background: #f82824;
                                         margin-bottom: 10%;
                                     border-radius: 4px;width: 70%;height: 16%;left: 15%;position: relative;">
                                         <div style="font-family: Nunito;
@@ -104,7 +109,7 @@
                                         padding-top: 4%;
                                         color: #FFFFFF;">Login in as a Supplier</div> </a>
                                     </div>
-                                    <a href="/login-simple"> <div style="background: #f82824;
+                                    <a href="/login/admin"> <div style="background: #f82824;
                                         margin-bottom: 10%;
                                     border-radius: 4px;width: 70%;height: 16%;left: 15%;position: relative;">
                                         <div style="font-family: Nunito;
