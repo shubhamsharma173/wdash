@@ -59,6 +59,14 @@ app.get("/", function (req, res) {
         res.render("home",{message: req.flash('info')});
     }
   });
+  app.get("/chats",function(req,res){
+    if (req.isAuthenticated()) {
+        res.render("chats");
+      }else {
+        res.redirect("/");
+    }
+  })
+
 
   app.get("/admin",function(req,res){
     if (req.isAuthenticated()) {
