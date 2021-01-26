@@ -43,7 +43,7 @@
                                 <div class="auth-cover-info py-xl-0 pt-100 pb-50" style="background: linear-gradient(135deg, rgba(255, 9, 4, 0.96) 0.59%, rgba(43, 193, 85, 0.8) 100%);
                                 mix-blend-mode: normal;
                                 opacity: 0.71;">
-                                    <div class="auth-cover-content text-center w-xxl-75 w-sm-90 w-xs-100 h-100">
+                                    <div class="auth-cover-content text-center w-xxl-75 w-sm-90 w-xs-100">
                                         <h1 class="display-3 text-white mb-20"><img height="95px" width="400px" src="/images/logo.jpg" alt=""></h1>
                                         <p class="text-white">The Uk’s number 1 site to get support and professional help with health issues. Based in NW of England we started in July 2020 and are founded by a cancer survivor who wanted more help during his recovery.</p>
                                         <br />
@@ -62,12 +62,12 @@
                             <%= message %>
                             <% } %>
                         </p>
-                        <div class="auth-form-wrap py-xl-0 py-50 h-100">
-                            <div class="auth-form w-xxl-65 w-xl-75 w-sm-90 w-xs-100">
-                                <h1 class="display-4 mb-10" style="color: #F46B68;">Welcome to Whealthway!</h1>
-                                <p class="mb-30">Login to find your health buddy.</p>
+                        <div class="auth-form-wrap py-xl-0 py-50">
+                            <div class="auth-form w-xxl-55 w-xl-75 w-sm-90 w-xs-100">
                                 <% if(mode==="admin"){ %>
                                 <form action="/register/admin" method="POST">
+                                    <h1 class="display-4 mb-10" style="color: #F46B68;">Welcome to Whealthway!</h1>
+                                    <p class="mb-30">Login to find your health buddy.</p>
                                     <div class="form-group">
                                         <label class="mb-10">NAME</label>
                                         <input class="form-control" placeholder="Enter your full name" type="text" name="name">
@@ -98,81 +98,42 @@
                                 </form>
                                 <% } %>
                                 <% if(mode==="member"){ %>
-                                <div class="container">
-                                    <form action="/register/member" method="POST">
-                                        <div class="form-group">
-                                            <div class="row mx-0">
-                                                <div class="col-xs col-5 p-0">
-                                                    <label class="mb-10">F NAME</label>
-                                                    <input class="form-control" placeholder="Enter your first name" type="text" name="fname">
-                                                </div>
-                                                <div class="col-xs col-2 ">
-                                
-                                                </div>
-                                                <div class="col-xs col-5 p-0">
-                                                    <label class="mb-10">LAST NAME</label>
-                                                    <input class="form-control" placeholder="Enter your last name" type="text" name="lname">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="mb-10">DATE OF BIRTH</label>
-                                            <div class="row mx-0">
-                                                <div class="col-xs col-5 p-0">
-                                                    <input class="form-control" type="date" name="dob">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="mb-10">POSTAL CODE</label>
-                                            <div class="row mx-0">
-                                                <div class="col-xs col-5 p-0">
-                                                    <input class="form-control" type="text" name="postal">
-                                                </div>
-                                            </div>
-                                        </div>
-                                
-                                        <div class="form-group">
-                                            <label class="mb-10">EMAIL ADDRESS</label>
-                                            <input class="form-control" placeholder="Email" type="email" name="username">
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="mb-10">PASSWORD</label>
-                                            <input class="form-control" onkeyup="active()" id="pswrd_1" type="password" placeholder="Enter Password">
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="mb-10">CONFIRM PASSWORD</label>
-                                            <input class="form-control" onkeyup="active_2()" id="pswrd_2" disabled type="password" placeholder="Confirm Password">
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="mb-10">HEALTH ISSUE</label>
-                                            <select class="form-control custom-select">
-                                                <option selected="">Select</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="mb-10">Maritial status</label>
-                                            <select class="form-control custom-select">
-                                                <option selected="">Select</option>
-                                                <option value="1">Married</option>
-                                                <option value="2">Single</option>
-                                            </select>
-                                        </div>
-                                
-                                        <p> <input type="checkbox" name="check" id="qmale"> Are you a male?</p>
-                                        <p class="float-right">Already have an account?<a href="/login-simple"> Signin</a></p>
-                                        <br />
-                                        <br />
-                                        <button class="float-right btn btn-block" style="width: 20%; background-color: #F46B68; color: #fff;"
-                                            type="submit">Sign Up</button>
-                                    </form>
-                                </div>
+                                <form action="/register/member" method="POST">
+                                    <h1 class="display-4 mb-10" style="color: #F46B68;">Welcome to Whealthway!</h1>
+                                    <p class="mb-30">Login to find your health buddy.</p>
+                                    <div class="form-group">
+                                        <label class="mb-10">NAME</label>
+                                        <input class="form-control" placeholder="Enter your full name" type="text" name="name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="mb-10">EMAIL ADDRESS</label>
+                                        <input class="form-control" placeholder="Email" type="email" name="username">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="mb-10">PASSWORD</label>
+                                        <input class="form-control" placeholder="Password" type="password" name="password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="mb-10">HEALTH ISSUE</label>
+                                        <select class="form-control custom-select">
+                                            <option selected="">Select</option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select>
+                                    </div>
+                                   
+                                    <p> <input type="checkbox" name="check" id="qmale"> Are you a male?</p>
+                                    <p class="float-right">Already have an account?<a href="/login-simple"> Signin</a></p>
+                                    <br />
+                                    <br />
+                                    <button class="float-right btn btn-block" style="width: 20%; background-color: #F46B68; color: #fff;" type="submit">Sign Up</button>
+                                </form>
                                 <% } %>
                                 <% if(mode==="supplier"){ %>
                                 <form action="/register/supplier" method="POST">
+                                    <h1 class="display-4 mb-10" style="color: #F46B68;">Welcome to Whealthway!</h1>
+                                    <p class="mb-30">Login to find your health buddy.</p>
                                     <div class="form-group">
                                         <label class="mb-10">NAME</label>
                                         <input class="form-control" placeholder="Enter your full name" type="text" name="name">
