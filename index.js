@@ -75,6 +75,7 @@ app.get("/", function (req, res) {
         res.redirect("/");
     }
   })
+
   app.get("/doctor",function(req,res){
     if (req.isAuthenticated()) {
         res.render("doctor");
@@ -82,9 +83,18 @@ app.get("/", function (req, res) {
         res.redirect("/");
     }
   })
+
   app.get("/patient",function(req,res){
     if (req.isAuthenticated()) {
         res.render("patient");
+      }else {
+        res.redirect("/");
+    }
+  })
+
+  app.get("/dashboard",function(req,res){
+    if (req.isAuthenticated()) {
+        res.render("dashboard");
       }else {
         res.redirect("/");
     }
@@ -168,10 +178,10 @@ app.get('/login/:mode', function (req, res) {
                         res.redirect("/admin");
                     }
                     if(data.mode==="member"){
-                        res.redirect("/patient");
+                        res.redirect("/dashboard");
                     }
                     if(data.mode==="supplier"){
-                        res.redirect("/doctor");
+                        res.redirect("/dashboard");
                     }
                 }
             })
