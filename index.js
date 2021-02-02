@@ -4,7 +4,6 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const mongoose = require("mongoose");
 const session = require('express-session');
-const passportLocalMongoose = require("passport-local-mongoose");
 const passport = require('passport');
 const flash = require("connect-flash");
 
@@ -32,15 +31,8 @@ app.use(session({
   mongoose.set("useCreateIndex", true);
   mongoose.set('useFindAndModify', false);
 
-  const userSchema = new mongoose.Schema({
-    fullName: String,
-    username: String,
-    mode: String,
-    salt: String,
-    hash: String
-  }, { collection: "users" });
-  userSchema.plugin(passportLocalMongoose);
-const User = new mongoose.model("User", userSchema, "users");
+  
+const User = require("./models/user")
 
 passport.use(User.createStrategy());
 
@@ -52,56 +44,26 @@ passport.deserializeUser((user, cb) => {
   cb(null, user);
 });
 
-app.get("/", function (req, res) {
-    if (req.isAuthenticated()) {
-        res.redirect("admin");
-      }else {
-        res.render("home",{message: req.flash('info')});
-    }
-  });
-  app.get("/chats",function(req,res){
-    if (req.isAuthenticated()) {
-        res.render("chats");
-      }else {
-        res.redirect("/");
-    }
-  })
+const home = require('./routes/home')
+app.use('/', home);
 
+const chats = require('./routes/chats')
+app.use('/chats', chats);
 
-  app.get("/admin",function(req,res){
-    if (req.isAuthenticated()) {
-        res.render("admin");
-      }else {
-        res.redirect("/");
-    }
-  })
+const admin = require('./routes/admin')
+app.use('/admin', admin);
 
-  app.get("/doctor",function(req,res){
-    if (req.isAuthenticated()) {
-        res.render("doctor");
-      }else {
-        res.redirect("/");
-    }
-  })
+const doctor = require('./routes/doctor')
+app.use('/doctor', doctor);
 
-  app.get("/patient",function(req,res){
-    if (req.isAuthenticated()) {
-        res.render("patient");
-      }else {
-        res.redirect("/");
-    }
-  })
+const patient = require('./routes/patient')
+app.use('/patient', patient);
 
-  app.get("/dashboard",function(req,res){
-    if (req.isAuthenticated()) {
-        res.render("dashboard");
-      }else {
-        res.redirect("/");
-    }
-  })
+const dashboard = require('./routes/dashboard')
+app.use('/dashboard', dashboard);
+  
 
-  let flag=0;
-  //login page get request..
+//login page get request..
 app.get('/login/:mode', function (req, res) {
     if (req.isAuthenticated()) {
         res.redirect("/admin");
