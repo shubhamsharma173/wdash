@@ -169,7 +169,7 @@
                                             </select>
                                         </div>
                                         <div class="form-group col-xs col-6 p-10">
-                                            <label class="mb-5">Maritial status</label>
+                                            <label class="mb-5">MARITIAL STATUS</label>
                                             <select class="form-control custom-select">
                                                 <option selected="">Select</option>
                                                 <option value="1">Married</option>
@@ -193,7 +193,7 @@
                                                 <input class="form-control" type="date" name="dod">
                                             </div>
                                             <div class="form-group col-xs col-6 p-10">
-                                                <label class="mb-5">Stage of Illness</label>
+                                                <label class="mb-5">STAGE OF ILLNESS</label>
                                                 <select class="form-control custom-select">
                                                     <option selected="">Select</option>
                                                     <option value="1">Recently diagnosed</option>
@@ -234,29 +234,98 @@
                                 <% } %>
                                 <% if(mode==="supplier"){ %>
                                 <form action="/register/supplier" method="POST">
-                                    <div class="form-group">
-                                        <label class="mb-10">NAME</label>
-                                        <input class="form-control" placeholder="Enter your full name" type="text" name="name">
+                                    <div class="row mx-0">
+                                        <div class="form-group col p-10">
+                                        <label class="mb-5">BUSINESS REGISTRATION NUMBER</label>
+                                        <input class="form-control" placeholder="Enter your Business Number" type="text" name="bNum">
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="mb-10">EMAIL ADDRESS</label>
-                                        <input class="form-control" placeholder="Email" type="email" name="username">
+                                    <div class="row mx-0">
+                                        <div class="form-group col-xs col-6 p-10">
+                                        <label class="mb-5">BUSINESS NAME</label>
+                                        <input class="form-control" placeholder="Enter your Business name" type="text" name="name">
                                     </div>
-                                    <div class="form-group">
-                                        <label class="mb-10">PASSWORD</label>
-                                        <input class="form-control" placeholder="Password" type="password" name="password">
+                                        <div class="form-group col-xs col-6 p-10">
+                                            <label class="mb-5">POSTAL CODE</label>
+                                            <input class="form-control" type="text" name="postal">
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="mb-10">HEALTH ISSUE</label>
-                                        <select class="form-control custom-select">
-                                            <option selected="">Select</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                        </select>
+                                    <div class="row mx-0">
+                                        <div class="form-group col-xs col-6 p-10">
+                                            <label class="mb-5">FIRST NAME</label>
+                                            <input class="form-control" placeholder="Enter your first name" type="text" name="fname">
+                                        </div>
+                                        <div class="form-group col-xs col-6 p-10">
+                                            <label class="mb-5">LAST NAME</label>
+                                            <input class="form-control" placeholder="Enter your last name" type="text" name="lname">
+                                        </div>
                                     </div>
-                                   
-                                    <p> <input type="checkbox" name="check" id="qmale"> Are you a male?</p>
+                                    <div class="row mx-0">
+                                        <div class="form-group col-xs col-6 p-10">
+                                            <label class="mb-5">EMAIL ADDRESS</label>
+                                            <input class="form-control" placeholder="Email" type="email" name="username">
+                                        </div>
+                                        <div class="form-group col-xs col-6 p-10">
+                                            <label class="mb-5">MOBILE NUMBER</label>
+                                            <input class="form-control" placeholder="MOBILE NUMBER" type="tel" name="mobile">
+                                        </div>
+                                    </div>
+                                    <div class="row mx-0">
+                                        <div class="form-group col-xs col-6 p-10">
+                                            <label class="mb-5">PASSWORD</label>
+                                            <input class="form-control" onkeyup="active()" id="pswrd_1" type="password" placeholder="Enter Password">
+                                        </div>
+                                        <div class="form-group col-xs col-6 p-10">
+                                            <label class="mb-5">CONFIRM PASSWORD</label>
+                                            <input class="form-control" onkeyup="active_2()" id="pswrd_2" disabled type="password" placeholder="Confirm Password">
+                                        </div>
+                                        </div>
+                                        <div class="row mx-0">
+                                            <div class="form-group col-xs col-6 p-10">
+                                                <label class="mb-5">SERVICES</label>
+                                                <select class="form-control custom-select">
+                                                    <option selected="">Select</option>
+                                                    <option value="1">One</option>
+                                                    <option value="2">Two</option>
+                                                    <option value="3">Three</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-xs col-6 p-10">
+                                                <label class="mb-5">QUALIFICATIONS</label>
+                                                <input class="form-control" type="text">
+                                            </div>
+                                        </div>
+                                        <fieldset class="form-group mb-15">
+                                            <div class="row mx-0">
+                                                <label class="col-form-label col-xs col-6 pt-0">Type of membership</label>
+                                                <div class="col-sm-10">
+                                                    <div class="custom-control custom-radio mb-5">
+                                                        <input id="option_1" name="optionHorizontal" class="custom-control-input" checked="" type="radio">
+                                                        <label class="custom-control-label" for="option_1">Basic £X per month </label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio mb-5">
+                                                        <input id="option_2" name="optionHorizontal" class="custom-control-input" type="radio">
+                                                        <label class="custom-control-label" for="option_2">Platinum £Y per month </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>   
+                                        <div class="row mx-0">
+                                            <div class="form-group col-xs col-6 p-10">
+                                                <label class="mb-5">EXPERIENCE</label>
+                                                <input class="form-control" placeholder="Enter your first name" type="text" name="fname">
+                                            </div>
+                                            <div class="form-group col-xs col-6 p-10">
+                                                <label class="mb-5">KEY SKILLS</label>
+                                                <input class="form-control" placeholder="Enter your last name" type="text" name="lname">
+                                            </div>
+                                        </div>       
+                                        <div class="row mx-0">
+                                            <div class="form-group col p-10">
+                                            <label class="mb-5">What sets you apart to be a partner supplier on the site? </label>
+                                            <input class="form-control" placeholder="Comments" type="text" name="bNum">
+                                            </div>
+                                        </div>                         
                                     <p class="float-right">Already have an account?<a href="/login-simple"> Signin</a></p>
                                     <br />
                                     <br />
