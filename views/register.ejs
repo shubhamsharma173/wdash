@@ -42,8 +42,10 @@
                     mix-blend-mode: normal;
                     ">
                             <div class="fadeOut item auth-cover-img overlay-wrap">
-                                <div class="auth-cover-info py-xl-0 pt-100 pb-50">
-                                    <div class="auth-cover-content text-center">
+                                <div class="auth-cover-info py-xl-0 pt-100 pb-50" style="background: linear-gradient(135deg, rgba(255, 9, 4, 0.96) 0.59%, rgba(43, 193, 85, 0.8) 100%);
+                                mix-blend-mode: normal;
+                                opacity: 0.71;">
+                                    <div class="auth-cover-content text-center w-xxl-75 w-sm-90 w-xs-100">
                                         <h1 class="display-3 text-white mb-20"><img height="95px" width="400px" src="/images/logo.jpg" alt=""></h1>
                                         <p class="text-white">The Uk’s number 1 site to get support and professional help with health issues. Based in NW of England we started in July 2020 and are founded by a cancer survivor who wanted more help during his recovery.</p>
                                         <br />
@@ -62,12 +64,12 @@
                             <%= message %>
                             <% } %>
                         </p>
-                        <div class="auth-form-wrap py-50 h-100">
-                            <div class="auth-form w-xxl-65 w-xl-75 w-sm-90 w-xs-100">
-                                <h1 class="display-4 mb-10" style="color: #F46B68;">Welcome to Whealthway!</h1>
-                                <p class="mb-30">Login to find your health buddy.</p>
+                        <div class="auth-form-wrap py-xl-0 py-50">
+                            <div class="auth-form w-xxl-55 w-xl-75 w-sm-90 w-xs-100">
                                 <% if(mode==="admin"){ %>
                                 <form action="/register/admin" method="POST">
+                                    <h1 class="display-4 mb-10" style="color: #F46B68;">Welcome to Whealthway!</h1>
+                                    <p class="mb-30">Login to find your health buddy.</p>
                                     <div class="form-group">
                                         <label class="mb-10">NAME</label>
                                         <input class="form-control" placeholder="Enter your full name" type="text" name="name">
@@ -98,147 +100,45 @@
                                 </form>
                                 <% } %>
                                 <% if(mode==="member"){ %>
-                                <div class="container">
-                                    <form action="/register/member" method="POST">
-                                            <div class="row mx-0">
-                                                <div class="form-group col-xs col-6 p-10">
-                                                    <label class="mb-5">FIRST NAME</label>
-                                                    <input class="form-control" placeholder="Enter your first name" type="text" name="fname">
-                                                </div>
-                                                <div class="form-group col-xs col-6 p-10">
-                                                    <label class="mb-5">LAST NAME</label>
-                                                    <input class="form-control" placeholder="Enter your last name" type="text" name="lname">
-                                                </div>
-                                            </div>
-                                            <div class="row mx-0">
-                                                <div class="form-group col-xs col-6 p-10">
-                                                    <label class="mb-5">DATE OF BIRTH</label>
-                                                    <input class="form-control" type="date" name="dob">
-                                                </div>
-                                                <div class="form-group col-xs col-6 p-10">
-                                                    <label class="mb-5">POSTAL CODE</label>
-                                                    <input class="form-control" type="text" name="postal">
-                                                </div>
-                                            </div>
-                                        <div class="row mx-0">
-                                            <div class="form-group col-xs col-6 p-10">
-                                                <label class="mb-5">EMAIL ADDRESS</label>
-                                                <input class="form-control" placeholder="Email" type="email" name="username">
-                                            </div>
-                                            <div class="form-group col-xs col-6 p-10">
-                                                <label class="mb-5">MOBILE NUMBER</label>
-                                                <input class="form-control" placeholder="MOBILE NUMBER" type="tel" name="mobile">
-                                            </div>
-                                        </div>
-                                        <div class="row mx-0">
-                                        <div class="form-group col-xs col-6 p-10">
-                                            <label class="mb-5">PASSWORD</label>
-                                            <input class="form-control" onkeyup="active()" id="pswrd_1" type="password" placeholder="Enter Password">
-                                        </div>
-                                        <div class="form-group col-xs col-6 p-10">
-                                            <label class="mb-5">CONFIRM PASSWORD</label>
-                                            <input class="form-control" onkeyup="active_2()" id="pswrd_2" disabled type="password" placeholder="Confirm Password">
-                                        </div>
-                                        </div>
-                                        <div class="row mx-0">
-                                            <div class="form-group col">
-                                                <div class="row mx-0">
-                                                    <label class="mb-5">What Services are you interested in?</label>
-                                                </div>
-                                                <div class="row mx-0">
-                                                    <div class="custom-control custom-checkbox col">
-                                                        <input class="custom-control-input" type="checkbox" name="check1" id="qfriend"> <label class="custom-control-label">Find a Friend</label>
-                                                    </div>
-                                                    <div class="custom-control custom-checkbox col-5">
-                                                        <input class="custom-control-input" type="checkbox" name="check2" id="qprof"> <label class="custom-control-label">Find a Professional</label>
-                                                    </div>
-                                                    <div class="custom-control custom-checkbox col">
-                                                        <input class="custom-control-input" type="checkbox" name="check3" id="qprod"><label class="custom-control-label">Find Products</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row mx-0">
-                                        <div class="form-group col-xs col-6 p-10">
-                                            <label class="mb-5">HEALTH ISSUE</label>
-                                            <select class="form-control custom-select">
-                                                <option selected="">Select</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-xs col-6 p-10">
-                                            <label class="mb-5">MARITIAL STATUS</label>
-                                            <select class="form-control custom-select">
-                                                <option selected="">Select</option>
-                                                <option value="1">Married</option>
-                                                <option value="2">Single</option>
-                                            </select>
-                                        </div>
-                                        </div>
-                                        <div class="row mx-0">
-                                        <div class="form-group col p-10">
-                                            <label class="mb-5">PERSONAL INTERESTS</label>
-                                            <select class="form-control custom-select">
-                                                <option selected="">Select</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                            </select>
-                                        </div>
-                                        </div>
-                                        <div class="row mx-0">
-                                            <div class="form-group col-xs col-6 p-10">
-                                                <label class="mb-5">DATE OF DIAGNOSIS</label>
-                                                <input class="form-control" type="date" name="dod">
-                                            </div>
-                                            <div class="form-group col-xs col-6 p-10">
-                                                <label class="mb-5">STAGE OF ILLNESS</label>
-                                                <select class="form-control custom-select">
-                                                    <option selected="">Select</option>
-                                                    <option value="1">Recently diagnosed</option>
-                                                    <option value="2">Having treatment</option>
-                                                    <option value="3">In recovery</option>
-                                                    <option value="4">Recovered</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="row mx-0">
-                                            <div class="form-group col">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input class="custom-control-input" type="checkbox" name="check4" id="qfriend"> <label class="custom-control-label">Willing to provide details of your story </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row mx-0">
-                                            <div class="form-group col">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input class="custom-control-input" type="checkbox" name="check5" id="qfriend"> <label class="custom-control-label">Interested in receiving notifications by phone or email</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row mx-0">
-                                            <div class="form-group col">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input class="custom-control-input" type="checkbox" name="check" id="qfriend"> <label class="custom-control-label">Do you agree for your details to be securely stored in line with GDPR</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <p class="float-right">Already have an account?<a href="/login-simple"> Signin</a></p>
-                                        <br />
-                                        <br />
-                                        <button class="float-right btn btn-block" style="width: 20%; background-color: #F46B68; color: #fff;"
-                                            type="submit">Sign Up</button>
-                                    </form>
-                                </div>
+                                <form action="/register/member" method="POST">
+                                    <h1 class="display-4 mb-10" style="color: #F46B68;">Welcome to Whealthway!</h1>
+                                    <p class="mb-30">Login to find your health buddy.</p>
+                                    <div class="form-group">
+                                        <label class="mb-10">NAME</label>
+                                        <input class="form-control" placeholder="Enter your full name" type="text" name="name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="mb-10">EMAIL ADDRESS</label>
+                                        <input class="form-control" placeholder="Email" type="email" name="username">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="mb-10">PASSWORD</label>
+                                        <input class="form-control" placeholder="Password" type="password" name="password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="mb-10">HEALTH ISSUE</label>
+                                        <select class="form-control custom-select">
+                                            <option selected="">Select</option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select>
+                                    </div>
+                                   
+                                    <p> <input type="checkbox" name="check" id="qmale"> Are you a male?</p>
+                                    <p class="float-right">Already have an account?<a href="/login-simple"> Signin</a></p>
+                                    <br />
+                                    <br />
+                                    <button class="float-right btn btn-block" style="width: 20%; background-color: #F46B68; color: #fff;" type="submit">Sign Up</button>
+                                </form>
                                 <% } %>
                                 <% if(mode==="supplier"){ %>
                                 <form action="/register/supplier" method="POST">
-                                    <div class="row mx-0">
-                                        <div class="form-group col p-10">
-                                        <label class="mb-5">BUSINESS REGISTRATION NUMBER</label>
-                                        <input class="form-control" placeholder="Enter your Business Number" type="text" name="bNum">
-                                        </div>
+                                    <h1 class="display-4 mb-10" style="color: #F46B68;">Welcome to Whealthway!</h1>
+                                    <p class="mb-30">Login to find your health buddy.</p>
+                                    <div class="form-group">
+                                        <label class="mb-10">NAME</label>
+                                        <input class="form-control" placeholder="Enter your full name" type="text" name="name">
                                     </div>
                                     <div class="row mx-0">
                                         <div class="form-group col-xs col-6 p-10">
