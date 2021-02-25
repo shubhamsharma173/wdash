@@ -32,7 +32,9 @@ app.use(session({
   mongoose.set('useFindAndModify', false);
 
   
-const User = require("./models/user")
+const User = require("./models/user");
+const Supplier = require("./models/supplier");
+const Member = require("./models/member");
 
 passport.use(User.createStrategy());
 
@@ -107,7 +109,6 @@ app.get('/login/:mode', function (req, res) {
       } else {
         passport.authenticate("local")(req, res, function () {
           User.findOneAndUpdate({ username: req.user.username }, {
-            fullName: req.body.name,
             mode: req.params.mode
           }, null, function (err, docs) {
             if (err) {
@@ -119,6 +120,47 @@ app.get('/login/:mode', function (req, res) {
               //console.log("Original Doc : ",docs);
             }
           });
+          if(req.params.mode==="supplier"){
+            let det=new Supplier({
+              bNum: req.body.bNum,
+              bName: req.body.bName,        
+              postal: req.body.postal,       
+              fName: req.body.fName,
+              lName: req.body.lName,
+              username: req.body.username,
+              mobile: req.body.mobile,
+              service: req.body.service,
+              qual: req.body.qual,
+              membership: req.body.membership,
+              exp: req.body.exp,
+              skill: req.body.skill,
+              comment: req.body.comment
+            });
+            det.save();
+          }
+          if(req.params.mode==="member"){
+            let det=new Member({
+              fName: req.body.fName,
+              lName: req.body.lName,
+              dob: req.body.dob,
+              postal: req.body.postal,
+              username: req.body.username,
+              mobile: req.body.mobile,
+              check1: req.body.check1,
+              check2: req.body.check2,
+              check3: req.body.check3,
+              healthIssue: req.body.healthIssue,
+              maritialStatus: req.body.maritialStatus,
+              personalIntrest: req.body.personalIntrest,
+              dod: req.body.dod,
+              stage: req.body.stage,
+              check4: req.body.check4,
+              check5: req.body.check5,
+              check6: req.body.check6,
+            });
+            det.save();
+          }
+          
         });
       }
     });
