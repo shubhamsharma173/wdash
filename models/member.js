@@ -5,7 +5,11 @@ const memberSchema = new mongoose.Schema({
   lName: { type: String },
   dob: { type: String },
   postal: { type: String },
-  username: { type: String, lowercase: true, unique:true, trim: true },
+  user: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'User',
+    required: [true, 'User not registered!']
+  },
   mobile: { type: String },
   check1: { type: String },
   check2: { type: String },
@@ -18,7 +22,7 @@ const memberSchema = new mongoose.Schema({
   check4: { type: String },
   check5: { type: String },
   check6: { type: String },
-  time : { type : Date, default: Date.now }
+  createdAt : { type : Date, default: Date.now }
   }, {
     writeConcern: {
       w: 'majority',

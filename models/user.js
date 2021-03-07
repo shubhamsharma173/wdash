@@ -2,12 +2,25 @@ const mongoose = require("mongoose");
 const passportLocalMongoose = require("passport-local-mongoose");
 
 const userSchema = new mongoose.Schema({
-    fullName: { type: String, lowercase: true, trim: true },
-    username: { type: String, lowercase: true, unique:true, trim: true },
-    mode: { type: String},
+    fullName: { 
+      type: String, 
+      lowercase: true, 
+      trim: true 
+    },
+    username: { 
+      type: String, 
+      lowercase: true, 
+      unique:true,
+      trim: true,
+      required: [true, 'User must have a username!']
+    },
+    mode: { 
+      type: String,
+      required: [true, 'User must have a mode!']
+    },
     salt: { type: String},
     hash: { type: String},
-    time : { type : Date, default: Date.now }
+    createdAt : { type : Date, default: Date.now }
   }, {
     writeConcern: {
       w: 'majority',
@@ -16,6 +29,6 @@ const userSchema = new mongoose.Schema({
     }
   });
   userSchema.plugin(passportLocalMongoose);
-  const User = new mongoose.model("User", userSchema, "users");
+  const User =  mongoose.model("User", userSchema, "users");
   
   module.exports = User;

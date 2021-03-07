@@ -6,7 +6,11 @@ const suppSchema = new mongoose.Schema({
     postal: { type: String },
     fName: { type: String },
     lName: { type: String },
-    username: { type: String, lowercase: true, unique:true, trim: true },
+    user: {
+      type: mongoose.Schema.ObjectId,
+      ref: 'User',
+      required: [true, 'User not registered!']
+    },
     mobile: { type: String },
     service: { type: String },
     qual: { type: String },
@@ -14,7 +18,7 @@ const suppSchema = new mongoose.Schema({
     exp: { type: String },
     skill: { type: String },
     comment: { type: String },
-    time : { type : Date, default: Date.now }
+    createdAt : { type : Date, default: Date.now }
   }, {
     writeConcern: {
       w: 'majority',
