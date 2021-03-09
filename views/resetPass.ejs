@@ -58,14 +58,18 @@
                     <div class="col-xl-7 pa-0">
                         <div class="auth-form-wrap py-xl-0 py-50">
                             <div class="auth-form w-xxl-55 w-xl-75 w-sm-90 w-xs-100">
-                                <form method="POST" action="/forgotPass">
-                                    <h1 class="display-4 mb-10" style="color: #F46B68;">Forgot your password?</h1>
-                                    <p class="mb-30">Enter your email address below and we'll get you back on track.</p>
+                                <form method="POST" action="/forgotPass/reset/<%= ident %>/<%= today %>-<%= hash %>">
+                                    <h1 class="display-4 mb-10" style="color: #F46B68;">Reset your password!</h1>
+                                    <p class="mb-30">Enter new Password.</p>
                                     <div class="form-group">
-                                        <label class="mb-10">EMAIL ADDRESS</label>
-                                        <input class="form-control" name="email" placeholder="Email" type="email">
+                                        <label class="mb-10">Password</label>
+                                        <input class="form-control" name="pass1" type="password">
                                     </div>
-                                    <p><a href="/">Back to sign in</a></p>
+                                    <div class="form-group">
+                                        <label class="mb-10">Confirm Password</label>
+                                        <input class="form-control" name="pass2" type="password">
+                                    </div>
+                                    <!-- <p><a href="/">Back to sign in</a></p> -->
                                     <button class="float-right btn btn-block" style="width: 30.5%; background-color: #F46B68; color: #fff;" type="submit">Reset Password</button>
                                 </form>
                             </div>

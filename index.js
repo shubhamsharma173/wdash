@@ -69,7 +69,10 @@ app.use('/login', login);
 
 const register = require('./routes/register')
 app.use('/register', register);
-  
+
+const forgotPass = require('./routes/forgotPass')
+app.use('/forgotPass', forgotPass);
+
   app.get("/login-fail", function (req, res) {
     req.flash('info', 'Invalid username or password, Please try again!');
     res.redirect('/')

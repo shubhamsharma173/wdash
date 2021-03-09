@@ -20,7 +20,10 @@ const userSchema = new mongoose.Schema({
     },
     salt: { type: String},
     hash: { type: String},
-    createdAt : { type : Date, default: Date.now }
+    createdAt : { type : Date, default: Date.now },
+    lastLogin: {
+      type: Date
+    }
   }, {
     writeConcern: {
       w: 'majority',

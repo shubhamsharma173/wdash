@@ -28,7 +28,8 @@ router.get('/:mode', function (req, res) {
     failureRedirect: "/login-fail", failureFlash: true
   }), function (req, res) {
     try {
-            User.findOne({ username : req.body.username.toLowerCase()},function(err,data){
+      let dt= new Date();
+            User.findOneAndUpdate({ username : req.body.username.toLowerCase()},{lastLogin: dt},function(err,data){
                 if(err){console.log(err);}else{
                     if(data.mode==="admin"){
                         res.redirect("/admin");
