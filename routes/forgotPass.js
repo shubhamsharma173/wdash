@@ -59,7 +59,7 @@ router.post('/',(req,res) => {
                     from: process.env.ZID, // TODO: email sender
                     to: usr.username, // TODO: email receiver
                     subject: 'testing',
-                    text: " Reset Password:  http://localhost:5000/forgotPass/password-change/"+ident+"/"+today+"-"+hash
+                    text: " Reset Password:  https://whealthway.herokuapp.com/forgotPass/password-change/"+ident+"/"+today+"-"+hash
                 };
                 transporter.sendMail(mailOptions, (err3, datam) => {
                     if (err3) {
