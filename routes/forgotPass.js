@@ -3,6 +3,7 @@ const router = express.Router()
 const User = require("../models/user");
 const crypto = require('crypto');
 const moment = require('moment');
+const nodemailer = require('nodemailer');
 
 const base64Encode = (data) => {
     let buff = new Buffer.from(data);
@@ -30,7 +31,6 @@ router.post('/',(req,res) => {
         if(err){console.log(err);}
         else{
             if(usr!=null){
-                res.send("User found!");
                 // Generate the necessary data for the link
                 const today = base64Encode(new Date().toISOString());
                 const ident = base64Encode(usr._id.toString());
@@ -43,25 +43,31 @@ router.post('/',(req,res) => {
                 };
                 const hash = sha256(JSON.stringify(data), process.env.TOKENSECRET);
                 // console.log('localhost:5000/forgotPass/password-change/'+ident+'/'+today+'-'+hash);
-                // // Step 1
-                // let transporter = nodemailer.createTransport({
-                //     host: 'smtp.zoho.eu',
-                //     port: 465,
-                //     secure: true,
-                //     auth: {
-                //       user: process.env.ZID, // TODO: your mail account
-                //       pass: process.env.ZPASS // TODO: your mail password
-                //     }
-                //   });
+                // Step 1
+                let transporter = nodemailer.createTransport({
+                    host: 'smtp.zoho.eu',
+                    port: 465,
+                    secure: true,
+                    auth: {
+                        user: process.env.ZID, // TODO: your mail account
+                        pass: process.env.ZPASS // TODO: your mail password
+                    }
+                });
 
-                //   // Step 2
-                //   let mailOptions = {
-                //     from: process.env.ZID, // TODO: email sender
-                //     to: usr.username, // TODO: email receiver
-                //     subject: 'testing',
-                //     text: 'localhost:5000/password-change/'+ident+'/'+today+'-'+hash
-                //   };
-
+                // Step 2
+                let mailOptions = {
+                    from: process.env.ZID, // TODO: email sender
+                    to: usr.username, // TODO: email receiver
+                    subject: 'testing',
+                    text: " Reset Password:  http://localhost:5000/forgotPass/password-change/"+ident+"/"+today+"-"+hash
+                };
+                transporter.sendMail(mailOptions, (err3, datam) => {
+                    if (err3) {
+                        res.send("FAIL");
+                    }else{
+                        res.send("Check Mail!");
+                    }
+                })
             }else{
                 res.send("User not found!");
             }
@@ -77,7 +83,7 @@ router.get('/password-change/:ident/:today-:hash', (req, res) => {
         const now = moment().utc(); 
         const timeSince = now.diff(then, 'hours');
         if(timeSince > 2) {
-            console.log("link is invalid!");
+            res.send("link is invalid!");
         }
 
         const userId = base64Decode(req.params.ident);
@@ -97,7 +103,7 @@ router.get('/password-change/:ident/:today-:hash', (req, res) => {
             const hash = sha256(JSON.stringify(data), process.env.TOKENSECRET);
 
             if(hash !== req.params.hash) {
-                console.log("link is invalid!");
+                res.send("link is invalid!");
             }else{
                 res.render('resetPass',{ ident:req.params.ident, hash: req.params.hash, today:req.params.today });
             }
@@ -116,7 +122,7 @@ router.post('/reset/:ident/:today-:hash',(req,res) => {
         const now = moment().utc(); 
         const timeSince = now.diff(then, 'hours');
         if(timeSince > 2) {
-            console.log("link is invalid!");
+            res.send("link is invalid!");
         }
 
         const userId = base64Decode(req.params.ident);
@@ -137,7 +143,7 @@ router.post('/reset/:ident/:today-:hash',(req,res) => {
                 const hash = sha256(JSON.stringify(data), process.env.TOKENSECRET);
     
                 if(hash !== req.params.hash) {
-                    console.log("link is invalid!");
+                    res.send("link is invalid!");
                 }else{
                     account.setPassword(req.body.pass1, (err, user) => {
                         if(err){console.log(err);}else{
