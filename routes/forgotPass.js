@@ -148,7 +148,7 @@ router.post('/reset/:ident/:today-:hash',(req,res) => {
                     account.setPassword(req.body.pass1, (err, user) => {
                         if(err){console.log(err);}else{
                             account.save()
-                            res.send('success!')
+                            res.render('success')
                         }
                     })
                 }
