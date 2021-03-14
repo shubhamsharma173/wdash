@@ -12,32 +12,16 @@
 
     <!-- Custom CSS -->
     <link href="/dist/css/style.css" rel="stylesheet" type="text/css">
-    <style>
-        a {
-            font-family: Nunito;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 14px;
-            line-height: 26px;
-            /* identical to box height, or 186% */
-    
-            letter-spacing: 0.494118px;
-            color: #2BC155;
-        }
-    </style>
+    <link href="/css/reg.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-    
-   
 	<!-- HK Wrapper -->
 	<div class="hk-wrapper">
-
         <!-- Main Content -->
         <div class="hk-pg-wrapper hk-auth-wrapper">
-            
             <div class="container-fluid">
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-xl-5 pa-0" style="background: linear-gradient(135deg, rgba(255, 9, 4, 0.96) 0.59%, rgba(43, 193, 85, 0.8) 100%);
                     mix-blend-mode: normal;
                     ">
@@ -51,12 +35,9 @@
                                         <p class="text-grey">MEN’S HEALTH COMMUNITY</p>
                                     </div>
                                 </div>
-								<!-- <div class="bg-overlay bg-trans-dark-50"></div> -->
                             </div>
-                        <!-- </div> -->
                     </div>
-                    
-                    <div class="col-xl-7 pa-0">
+                    <div class="col-xl-7 pa-0"> -->
                         <p style="color:red;  font-family: Helvetica, Arial, sans-serif;  font-size: 13px;  font-weight: bold;  line-height: 20px;  text-shadow: 1px 1px rgba(250,250,250,.3);">
                             <% if (message.length>0) { %>
                             <%= message %>
@@ -64,6 +45,7 @@
                         </p>
                         <div class="auth-form-wrap py-50 h-100">
                             <div class="auth-form w-xxl-65 w-xl-75 w-sm-90 w-xs-100">
+                                <div class="container">
                                 <h1 class="display-4 mb-10" style="color: #F46B68;">Welcome to Whealthway!</h1>
                                 <p class="mb-30">Login to find your health buddy.</p>
                                 <% if(mode==="admin"){ %>
@@ -97,50 +79,50 @@
                                 </form>
                                 <% } %>
                                 <% if(mode==="member"){ %>
-                                <div class="container">
                                     <form action="/register/member" method="POST">
                                             <div class="row mx-0">
-                                                <div class="form-group col-xs col-6 p-10">
+                                                <div class="form-group col-xs col-6 px-0">
                                                     <label class="mb-5">FIRST NAME</label>
                                                     <input class="form-control" placeholder="Enter your first name" type="text" name="fName">
                                                 </div>
-                                                <div class="form-group col-xs col-6 p-10">
+                                                <div class="form-group col-xs col-6 px-0">
                                                     <label class="mb-5">LAST NAME</label>
                                                     <input class="form-control" placeholder="Enter your last name" type="text" name="lName">
                                                 </div>
                                             </div>
                                             <div class="row mx-0">
-                                                <div class="form-group col-xs col-6 p-10">
+                                                <div class="form-group col-xs col-6 px-0">
                                                     <label class="mb-5">DATE OF BIRTH</label>
                                                     <input class="form-control" type="date" name="dob">
                                                 </div>
-                                                <div class="form-group col-xs col-6 p-10">
+                                                <div class="form-group col-xs col-6 px-0">
                                                     <label class="mb-5">POSTAL CODE</label>
                                                     <input class="form-control" type="text" name="postal">
                                                 </div>
                                             </div>
                                         <div class="row mx-0">
-                                            <div class="form-group col-xs col-6 p-10">
+                                            <div class="form-group col-xs col-6 px-0">
                                                 <label class="mb-5">EMAIL ADDRESS</label>
                                                 <input class="form-control" placeholder="Email" type="email" name="username">
                                             </div>
-                                            <div class="form-group col-xs col-6 p-10">
+                                            <div class="form-group col-xs col-6 px-0">
                                                 <label class="mb-5">MOBILE NUMBER</label>
                                                 <input class="form-control" placeholder="MOBILE NUMBER" type="tel" name="mobile">
                                             </div>
                                         </div>
+                                        <div class="row mx-0" id="divCheckPasswordMatch"></div>
                                         <div class="row mx-0">
-                                        <div class="form-group col-xs col-6 p-10">
+                                            <div class="form-group col-xs col-6 px-0">
                                             <label class="mb-5">PASSWORD</label>
                                             <input class="form-control" onkeyup="active()" name="password" id="pswrd_1" type="password" placeholder="Enter Password">
                                         </div>
-                                        <div class="form-group col-xs col-6 p-10">
+                                        <div class="form-group col-xs col-6 px-0">
                                             <label class="mb-5">CONFIRM PASSWORD</label>
-                                            <input class="form-control" onkeyup="active_2()" name="password2" id="pswrd_2" disabled type="password" placeholder="Confirm Password">
+                                            <input class="form-control" onkeyup="active_2()" name="password2" id="pswrd_2" type="password" placeholder="Confirm Password">
                                         </div>
                                         </div>
                                         <div class="row mx-0">
-                                            <div class="form-group col">
+                                            <div class="form-group col px-0">
                                                 <div class="row mx-0">
                                                     <label class="mb-5">What Services are you interested in?</label>
                                                 </div>
@@ -159,7 +141,7 @@
                                             </div>
                                         </div>
                                         <div class="row mx-0">
-                                        <div class="form-group col-xs col-6 p-10">
+                                        <div class="form-group col-xs col-6 p-10 px-0">
                                             <label class="mb-5">HEALTH ISSUE</label>
                                             <select class="form-control custom-select" name="healthIssue">
                                                 <option selected="">Select</option>
@@ -168,7 +150,7 @@
                                                 <option value="Three">Three</option>
                                             </select>
                                         </div>
-                                        <div class="form-group col-xs col-6 p-10">
+                                        <div class="form-group col-xs col-6 p-10 px-0">
                                             <label class="mb-5">MARITIAL STATUS</label>
                                             <select class="form-control custom-select" name="maritialStatus">
                                                 <option selected="">Select</option>
@@ -178,7 +160,7 @@
                                         </div>
                                         </div>
                                         <div class="row mx-0">
-                                        <div class="form-group col p-10">
+                                        <div class="form-group col p-10 px-0">
                                             <label class="mb-5">PERSONAL INTERESTS</label>
                                             <select class="form-control custom-select" name="personalIntrest">
                                                 <option selected="">Select</option>
@@ -188,11 +170,11 @@
                                         </div>
                                         </div>
                                         <div class="row mx-0">
-                                            <div class="form-group col-xs col-6 p-10">
+                                            <div class="form-group col-xs col-6 p-10 px-0">
                                                 <label class="mb-5">DATE OF DIAGNOSIS</label>
                                                 <input class="form-control" type="date" name="dod">
                                             </div>
-                                            <div class="form-group col-xs col-6 p-10">
+                                            <div class="form-group col-xs col-6 p-10 px-0">
                                                 <label class="mb-5">STAGE OF ILLNESS</label>
                                                 <select class="form-control custom-select" name="stage">
                                                     <option selected="">Select</option>
@@ -204,21 +186,21 @@
                                             </div>
                                         </div>
                                         <div class="row mx-0">
-                                            <div class="form-group col">
+                                            <div class="form-group col px-0">
                                                 <div class="custom-control custom-checkbox">
                                                     <input class="" type="checkbox" value="Willing to provide details of your story" name="check4" id="check4"> <label class="">&nbsp; Willing to provide details of your story </label>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row mx-0">
-                                            <div class="form-group col">
+                                            <div class="form-group col px-0">
                                                 <div class="custom-control custom-checkbox">
                                                     <input class="" type="checkbox" value="Interested in receiving notifications by phone or email" name="check5" id="check5"> <label class="">&nbsp; Interested in receiving notifications by phone or email</label>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row mx-0">
-                                            <div class="form-group col">
+                                            <div class="form-group col px-0">
                                                 <div class="custom-control custom-checkbox">
                                                     <input class="" type="checkbox" value="Do you agree for your details to be securely stored in line with GDPR" name="check6" id="check6"> <label class="">&nbsp; Do you agree for your details to be securely stored in line with GDPR</label>
                                                 </div>
@@ -230,58 +212,59 @@
                                         <button class="float-right btn btn-block" style="width: 20%; background-color: #F46B68; color: #fff;"
                                             type="submit">Sign Up</button>
                                     </form>
-                                </div>
+                                
                                 <% } %>
                                 <% if(mode==="supplier"){ %>
                                 <form action="/register/supplier" method="POST">
                                     <div class="row mx-0">
-                                        <div class="form-group col p-10">
+                                        <div class="form-group col px-0">
                                         <label class="mb-5">BUSINESS REGISTRATION NUMBER</label>
-                                        <input class="form-control" placeholder="Enter your Business Number" type="text" name="bNum">
+                                        <input class="form-control fLen" placeholder="Enter your Business Number" type="text" name="bNum">
                                         </div>
                                     </div>
                                     <div class="row mx-0">
-                                        <div class="form-group col-xs col-6 p-10">
+                                        <div class="form-group col-xs col-6 px-0">
                                         <label class="mb-5">BUSINESS NAME</label>
                                         <input class="form-control" placeholder="Enter your Business name" type="text" name="bName">
                                     </div>
-                                        <div class="form-group col-xs col-6 p-10">
+                                        <div class="form-group col-xs col-6 px-0">
                                             <label class="mb-5">POSTAL CODE</label>
                                             <input class="form-control" type="text" name="postal">
                                         </div>
                                     </div>
                                     <div class="row mx-0">
-                                        <div class="form-group col-xs col-6 p-10">
+                                        <div class="form-group col-xs col-6 px-0">
                                             <label class="mb-5">FIRST NAME</label>
                                             <input class="form-control" placeholder="Enter your first name" type="text" name="fName">
                                         </div>
-                                        <div class="form-group col-xs col-6 p-10">
+                                        <div class="form-group col-xs col-6 px-0">
                                             <label class="mb-5">LAST NAME</label>
                                             <input class="form-control" placeholder="Enter your last name" type="text" name="lName">
                                         </div>
                                     </div>
                                     <div class="row mx-0">
-                                        <div class="form-group col-xs col-6 p-10">
+                                        <div class="form-group col-xs col-6 px-0">
                                             <label class="mb-5">EMAIL ADDRESS</label>
                                             <input class="form-control" placeholder="Email" type="email" name="username">
                                         </div>
-                                        <div class="form-group col-xs col-6 p-10">
+                                        <div class="form-group col-xs col-6 px-0">
                                             <label class="mb-5">MOBILE NUMBER</label>
                                             <input class="form-control" placeholder="MOBILE NUMBER" type="tel" name="mobile">
                                         </div>
                                     </div>
+                                    <div class="row mx-0" id="divCheckPasswordMatch"></div>
                                     <div class="row mx-0">
-                                        <div class="form-group col-xs col-6 p-10">
+                                        <div class="form-group col-xs col-6 px-0">
                                             <label class="mb-5">PASSWORD</label>
                                             <input class="form-control" onkeyup="active()" name="password" id="pswrd_1" type="password" placeholder="Enter Password">
                                         </div>
-                                        <div class="form-group col-xs col-6 p-10">
+                                        <div class="form-group col-xs col-6 px-0">
                                             <label class="mb-5">CONFIRM PASSWORD</label>
-                                            <input class="form-control" onkeyup="active_2()" name="password2" id="pswrd_2" disabled type="password" placeholder="Confirm Password">
+                                            <input class="form-control" onkeyup="active_2()" name="password2" id="pswrd_2" type="password" placeholder="Confirm Password">
                                         </div>
                                         </div>
                                         <div class="row mx-0">
-                                            <div class="form-group col-xs col-6 p-10">
+                                            <div class="form-group col-xs col-6 px-0">
                                                 <label class="mb-5">SERVICES</label>
                                                 <select class="form-control custom-select" name="service">
                                                     <option selected="">Select</option>
@@ -290,7 +273,7 @@
                                                     <option value="Three">Three</option>
                                                 </select>
                                             </div>
-                                            <div class="form-group col-xs col-6 p-10">
+                                            <div class="form-group col-xs col-6 px-0">
                                                 <label class="mb-5">QUALIFICATIONS</label>
                                                 <input class="form-control" type="text" name="qual">
                                             </div>
@@ -311,19 +294,19 @@
                                             </div>
                                         </fieldset>   
                                         <div class="row mx-0">
-                                            <div class="form-group col-xs col-6 p-10">
+                                            <div class="form-group col-xs col-6 px-0">
                                                 <label class="mb-5">EXPERIENCE</label>
                                                 <input class="form-control" type="text" name="exp">
                                             </div>
-                                            <div class="form-group col-xs col-6 p-10">
+                                            <div class="form-group col-xs col-6 px-0">
                                                 <label class="mb-5">KEY SKILLS</label>
                                                 <input class="form-control" type="text" name="skill">
                                             </div>
                                         </div>       
                                         <div class="row mx-0">
-                                            <div class="form-group col p-10">
+                                            <div class="form-group col px-0">
                                             <label class="mb-5">What sets you apart to be a partner supplier on the site? </label>
-                                            <input class="form-control" placeholder="Comments" type="text" name="comment">
+                                            <input class="form-control fLen" placeholder="Comments" type="text" name="comment">
                                             </div>
                                         </div>                         
                                     <p class="float-right">Already have an account?<a href="/login-simple"> Signin</a></p>
@@ -334,8 +317,9 @@
                                 <% } %>
                             </div>
                         </div>
-                    </div>
-                </div>
+                        </div>
+                    <!-- </div>
+                </div> -->
             </div>
         </div>
         <!-- /Main Content -->
@@ -345,7 +329,7 @@
 
     <!-- jQuery -->
     <script src="/vendors/jquery/dist/jquery.min.js"></script>
-
+    <script src="/js/reg.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="/vendors/popper.js/dist/umd/popper.min.js"></script>
     <script src="/vendors/bootstrap/dist/js/bootstrap.min.js"></script>

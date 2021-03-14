@@ -33,8 +33,6 @@ app.use(session({
 
   
 const User = require("./models/user");
-const Supplier = require("./models/supplier");
-const Member = require("./models/member");
 
 passport.use(User.createStrategy());
 
