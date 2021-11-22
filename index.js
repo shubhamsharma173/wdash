@@ -50,17 +50,17 @@ app.use('/', home);
 const chats = require('./routes/chats')
 app.use('/chats', chats);
 
+const activity = require('./routes/activity')
+app.use('/activity', activity);
+
 const admin = require('./routes/admin')
 app.use('/admin', admin);
 
-const doctor = require('./routes/doctor')
-app.use('/doctor', doctor);
+const member = require('./routes/member')
+app.use('/member', member);
 
-const patient = require('./routes/patient')
-app.use('/patient', patient);
-
-const dashboard = require('./routes/dashboard')
-app.use('/dashboard', dashboard);
+const supplier = require('./routes/supplier')
+app.use('/supplier', supplier);
 
 const login = require('./routes/login')
 app.use('/login', login);

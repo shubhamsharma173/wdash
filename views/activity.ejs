@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Activity feed</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Toggles CSS -->
+    <link href="vendors/jquery-toggles/css/toggles.css" rel="stylesheet" type="text/css">
+    <link href="vendors/jquery-toggles/css/themes/toggles-light.css" rel="stylesheet" type="text/css">
+
+    <!-- Custom CSS -->
+    <link href="dist/css/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="/css/dashboard.css">
+
+    <!-- jQuery -->
+    <script src="vendors/jquery/dist/jquery.min.js"></script>
+</head>
+
+<body>
+    
+    
+	<!-- HK Wrapper -->
+	<div class="hk-wrapper hk-vertical-nav">
+
+        <%- include('topbar'); -%>
+
+        <%- include('sidebar'); -%>
+
+        <!-- Main Content -->
+        <div class="hk-pg-wrapper">
+            <!-- Breadcrumb -->
+            <nav class="hk-breadcrumb" aria-label="breadcrumb">
+                <ol class="breadcrumb breadcrumb-light bg-transparent">
+                    <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Activity</li>
+                </ol>
+            </nav>
+            <!-- /Breadcrumb -->
+
+            <!-- Container -->
+            <div class="container">
+                <!-- Title -->
+                <div class="hk-pg-header mb-10">
+                    <div>
+						<h4 class="hk-pg-title"><span class="pg-title-icon"><span class="feather-icon"><i data-feather="activity"></i></span></span>Activity</h4>
+                    </div>
+					<div class="d-flex dropdown">
+                        <!-- <button class="btn btn-light btn-sm dropdown-toggle"  data-toggle="dropdown" aria-expanded="false">latest Date</button>
+						<div class="dropdown-menu dropdown-menu-right">
+							<a class="dropdown-item" href="#">Action</a>
+							<a class="dropdown-item" href="#">Another action</a>
+							<a class="dropdown-item" href="#">Something else here</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">Separated link</a>
+						</div> -->
+                        <button class="btn btn-primary btn-sm"><b>Create Post +</b></button>
+                    </div>
+                </div>
+                <!-- /Title -->
+
+                <!-- Row -->
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="card card-lg">
+							<div class="card-body">
+								<div class="user-activity">
+									<div class="media">
+										<div class="media-img-wrap">
+											<div class="avatar avatar-sm">
+												<img src="dist/img/avatar2.jpg" alt="user" class="avatar-img rounded-circle">
+											</div>
+										</div>
+										<div class="media-body">
+											<div>
+												<span class="d-block mb-5"><span class="font-weight-500 text-dark text-capitalize">Laura Thompson</span></span>
+												<span class="d-block font-13 mb-30">3 hours ago</span>
+											</div>
+											<div class="card d-inline-block w-sm-500p">
+                                                <div class="card-body">
+													<div class="d-flex flex-wrap">
+														<img class="rounded mb-15 mr-15" src="dist/img/img-thumb1.jpg" alt="thumb">
+														<div class="w-100">
+															<h6 class="mb-5">Team Josh Groben</h6>
+															<p>A fan club for josh groben songs</p>
+														</div>
+													</div>
+												</div>
+                                                <div class="card-footer text-muted justify-content-between">
+                                                    <div><span class="text-dark">71</span> Likes</div>
+													<button class="btn btn-xs btn-primary ml-15 w-sm-50p "><svg class="mb-1" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg></button>
+												</div>
+                                            </div>
+										</div>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+						
+					</div>
+                </div>
+                <!-- /Row -->
+            </div>
+            <!-- /Container -->
+
+            <!-- Footer -->
+            <div class="hk-footer-wrap container">
+                <footer class="footer">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <p>Pampered by<a href="https://Whealthway.com/" class="text-dark" target="_blank">Whealthway</a> © 2019</p>
+                        </div>
+                        <!-- <div class="col-md-6 col-sm-12">
+                            <p class="d-inline-block">Follow us</p>
+                            <a href="#" class="d-inline-block btn btn-icon btn-icon-only btn-indigo btn-icon-style-4"><span class="btn-icon-wrap"><i class="fa fa-facebook"></i></span></a>
+                            <a href="#" class="d-inline-block btn btn-icon btn-icon-only btn-indigo btn-icon-style-4"><span class="btn-icon-wrap"><i class="fa fa-twitter"></i></span></a>
+                            <a href="#" class="d-inline-block btn btn-icon btn-icon-only btn-indigo btn-icon-style-4"><span class="btn-icon-wrap"><i class="fa fa-google-plus"></i></span></a>
+                        </div> -->
+                    </div>
+                </footer>
+            </div>
+            <!-- /Footer -->
+
+        </div>
+        <!-- /Main Content -->
+
+    </div>
+    <!-- /HK Wrapper -->
+
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Slimscroll JavaScript -->
+    <script src="dist/js/jquery.slimscroll.js"></script>
+
+    <!-- Fancy Dropdown JS -->
+    <script src="dist/js/dropdown-bootstrap-extended.js"></script>
+
+    <!-- Toggles JavaScript -->
+    <script src="vendors/jquery-toggles/toggles.min.js"></script>
+    <script src="dist/js/toggle-data.js"></script>
+
+    <!-- FeatherIcons JavaScript -->
+    <script src="dist/js/feather.min.js"></script>
+
+    <!-- Init JavaScript -->
+    <script src="dist/js/init.js"></script>
+
+</body>
+
+</html>

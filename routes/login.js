@@ -35,10 +35,10 @@ router.get('/:mode', function (req, res) {
                         res.redirect("/admin");
                     }
                     if(data.mode==="member"){
-                        res.redirect("/dashboard");
+                        res.redirect("/member/home");
                     }
                     if(data.mode==="supplier"){
-                        res.redirect("/dashboard");
+                        res.redirect("/supplier/home");
                     }
                 }
             })

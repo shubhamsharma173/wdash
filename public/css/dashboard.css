@@ -1,0 +1,55 @@
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #2bc155;
+}
+.nav-item {
+  width: 95% !important;
+  margin: 2%;
+  margin-left: 0;
+}
+
+.activeNavItem {
+  background: linear-gradient(90deg, #2bc155 7.39%, #7bf29c 104.06%);
+  border-radius: 0px 12px 70px 0px;
+}
+
+.activeNavItem > a > .nav-link-text {
+  color: #fff !important;
+}
+
+.nav-link-text {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+
+  color: #969ba0;
+}
+.fooNav {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 18px;
+  /* identical to box height */
+  margin-left: 10%;
+  color: #969ba0;
+}

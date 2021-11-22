@@ -1,0 +1,89 @@
+<!-- Vertical Nav -->
+<nav class="hk-nav hk-nav-light">
+    <a href="javascript:void(0);" id="hk_nav_close" class="hk-nav-close"><span class="feather-icon"><i data-feather="x"></i></span></a>
+    <div class="nicescroll-bar">
+        <div class="navbar-nav-wrap">
+            
+            <div class="nav-header">
+                <span style="
+                font-style: normal;
+                font-weight: 600;
+                font-size: 17px;
+                line-height: 30px;
+                /* identical to box height */
+                
+                
+                color: #000000;">Main Menu</span>
+                <span></span>
+            </div>
+            <ul class="navbar-nav flex-column" id="navList">
+                <li class="nav-item" id="dashboard">
+                    <a class="nav-link" href="/member/home" >
+                        <i data-feather="activity"></i> &nbsp;&nbsp;
+                        <span class="nav-link-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item" id="chats">
+                    <a class="nav-link link-with-badge" href="/chats">
+                        <i data-feather="package"></i>&nbsp;&nbsp;
+                        <span class="nav-link-text">Chats</span>
+                    </a>
+                </li>
+                <li class="nav-item" id="activity">
+                    <a class="nav-link link-with-badge" href="/activity">
+                        <i data-feather="package"></i>&nbsp;&nbsp;
+                        <span class="nav-link-text">Activity Feed</span>
+                    </a>
+                </li>
+                
+            </ul>
+            <!-- <p class="fooNav mt-10">Whealthway Dashboard</p>
+            <p class="fooNav">© 2020 All Rights Reserved</p> -->
+        </div>
+    </div>
+</nav>
+<div id="hk_nav_backdrop" class="hk-nav-backdrop"></div>
+ <!--/Vertical Nav -->
+
+ <!-- Vertical Nav -->
+ <!-- <nav class="hk-nav hk-nav-light">
+    <a href="javascript:void(0);" id="hk_nav_close" class="hk-nav-close"><span class="feather-icon"><i data-feather="x"></i></span></a>
+    <div class="nicescroll-bar">
+        <div class="navbar-nav-wrap">
+            <ul class="navbar-nav flex-column">
+                <li class="nav-item active">
+                    <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#dash_drp">
+                        <span class="feather-icon"><i data-feather="activity"></i></span>
+                        <span class="nav-link-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link-with-badge" href="javascript:void(0);" data-toggle="collapse" data-target="#app_drp">
+                        <span class="feather-icon"><i data-feather="package"></i></span>
+                        <span class="nav-link-text">Chat</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div id="hk_nav_backdrop" class="hk-nav-backdrop"></div> -->
+<!-- /Vertical Nav -->
+
+<script>
+    // function menuClick(target) {
+    //     $("#"+target.id).addClass("activeNavItem")
+    // }
+    $( document ).ready(function() {
+        let lc = window.location.href.split("/");
+    
+        if(lc[lc.length-1] == "home") {
+            $("#dashboard").addClass("activeNavItem")
+        }else if(lc[lc.length-1] == "chats") {
+            $("#chats").addClass("activeNavItem")
+        }else if(lc[lc.length-1] == "activity") {
+            console.log(lc);
+            $("#activity").addClass("activeNavItem")
+        }
+    });
+</script>
