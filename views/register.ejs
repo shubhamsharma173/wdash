@@ -258,7 +258,7 @@
                         <option>Osteoporosis</option>
                         <option>Hypertension</option>
                         <option>Other</option>
-                    </select>                      
+                      </select>
                     </div>
                     <div class="form-group col-xs col-6 p-10 px-auto">
                       <label class="mb-5">Marital Status</label>
@@ -274,16 +274,20 @@
                   </div>
 
                   <div id="otherdiv" class="row mx-0">
-                  <div class="form-group col-xs col-6 px-auto">
-                    <label class="text-muted mb-5">If Selected Other : Please Specify</label>
-                    <input class="form-control" type="text" name="postal">
+                    <div class="form-group col-xs col-6 px-auto">
+                      <label class="text-muted mb-5"
+                        >If Selected Other : Please Specify</label
+                      >
+                      <input class="form-control" type="text" name="postal" />
+                    </div>
                   </div>
-                </div>
 
                   <div class="row mx-0">
                     <div class="form-group col p-10 px-auto">
                       <label class="mb-5">Personal Intrests</label>
                       <select
+                        id="other2"
+                        onchange="other3()"
                         class="form-control custom-select"
                         name="personalIntrest"
                       >
@@ -310,6 +314,18 @@
                         <option>Creative Writing</option>
                         <option>Other</option>
                       </select>
+                    </div>
+                  </div>
+                  <div id="otherdiv2" class="row mx-0">
+                    <div class="form-group col-xs col-6 px-auto">
+                      <label class="text-muted mb-5"
+                        >If Selected Other : Please Specify</label
+                      >
+                      <input
+                        class="form-control"
+                        type="text"
+                        name="otherPresonal"
+                      />
                     </div>
                   </div>
                   <div class="row mx-0">
@@ -349,10 +365,7 @@
                         >
                       </div>
                     </div>
-                    <div
-                      id="rGroup1"
-                      class="form-group col-lg-5 px-auto"
-                    >
+                    <div id="rGroup1" class="form-group col-lg-5 px-auto">
                       <div class="d-inline-block custom-control custom-radio">
                         <input
                           type="radio"
@@ -437,10 +450,7 @@
                         >
                       </div>
                     </div>
-                    <div
-                      id="rGroup2"
-                      class="form-group col-lg-5 px-auto"
-                    >
+                    <div id="rGroup2" class="form-group col-lg-5 px-auto">
                       <div class="d-inline-block custom-control custom-radio">
                         <input
                           type="radio"

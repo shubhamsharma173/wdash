@@ -3,6 +3,7 @@ $(document).ready(function () {
     togRadios1();
     togRadios2();
     other();
+    other3();
 });
 
 function active_2() {
@@ -24,4 +25,9 @@ function togRadios2() {
 function other() {
   // console.log($("#other1").val());
   $("#other1").val() == "Other" ? $("#otherdiv").show() : $("#otherdiv").hide();
+}
+
+function other3() {
+  console.log($("#other2").val());
+  $("#other2").val() == "Other" ? $("#otherdiv2").show() : $("#otherdiv2").hide();
 }
