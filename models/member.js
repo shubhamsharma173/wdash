@@ -22,6 +22,7 @@ const memberSchema = new mongoose.Schema({
   check4: { type: String },
   check5: { type: String },
   check6: { type: String },
+  check7: { type: String },
   createdAt : { type : Date, default: Date.now }
   }, {
     writeConcern: {

@@ -51,7 +51,8 @@ router.get("/:mode", function (req, res) {
                   stage: req.body.stage,
                   check4: req.body.check4,
                   check5: req.body.check5,
-                  check6: req.body.check6
+                  check6: req.body.check6,
+                  check7: req.body.check7
                 });
                 det.save();
               }
