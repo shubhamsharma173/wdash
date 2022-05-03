@@ -40,6 +40,7 @@ router.post(
         function (err, data) {
           if (err) {
             console.log(err);
+            res.redirect("/error");
           } else {
             res.redirect("/");
           }

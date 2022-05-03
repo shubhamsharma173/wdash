@@ -77,6 +77,14 @@ app.get("/logout", function (req, res) {
   res.redirect("/");
 });
 
+app.get("/error", function (req, res) {
+  res.render("error");
+});
+
+app.get("*", function (req, res) {
+  res.render("404error");
+});
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {

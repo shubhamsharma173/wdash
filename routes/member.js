@@ -7,6 +7,7 @@ router.get("/", function (req, res) {
     Member.findOne({ user: req.user._id }, function (err, data) {
       if (err) {
         console.log(err);
+        res.redirect('/error');
       } else {
         res.render("dashboard", { fname: data.fName });
       }
