@@ -16,7 +16,7 @@
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #2bc155;
+  background: #61ce70;
 }
 .nav-item {
   width: 95% !important;
@@ -25,7 +25,7 @@
 }
 
 .activeNavItem {
-  background: linear-gradient(90deg, #2bc155 7.39%, #7bf29c 104.06%);
+  background: linear-gradient(90deg, #61ce70 7.39%, #7bf29c 104.06%);
   border-radius: 0px 12px 70px 0px;
 }
 
@@ -34,17 +34,17 @@
 }
 
 .nav-link-text {
-  font-family: Poppins;
+  font-family: Montserrat, Sans-serif;
   font-style: normal;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 24px;
   /* identical to box height */
 
   color: #969ba0;
 }
 .fooNav {
-  font-family: Poppins;
+  font-family: Montserrat, Sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 12px;
@@ -52,4 +52,23 @@
   /* identical to box height */
   margin-left: 10%;
   color: #969ba0;
+}
+
+.welcome {
+  color: #33ae69;
+  font-family: Montserrat, Sans-serif;
+  font-size: 2.5rem;
+  font-weight: 500;
+  line-height: 1rem;
+  letter-spacing: -2.5px;
+}
+
+@media (max-width: 770px) {
+  .welcome {
+    font-size: 2rem;
+  }
+  .w-parent {
+    width: 100%;
+    text-align: center !important;
+  }
 }

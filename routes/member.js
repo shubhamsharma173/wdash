@@ -1,11 +1,11 @@
 const express = require('express')
 const router = express.Router()
 
-router.get("/home",function(req,res){
+router.get("/",function(req,res){
     if (req.isAuthenticated()) {
         res.render("dashboard");
       }else {
-        res.redirect("/");
+        res.redirect("/login");
     }
 });
 

@@ -1,811 +1,307 @@
 <!DOCTYPE html>
-<!-- 
-Template Name: Marvin - Responsive Bootstrap 4 Admin Dashboard Template
-Author: Hencework
-Contact: https://hencework.ticksy.com/
-
-License: You must have a valid license purchased only from templatemonster to legally use the template for your project.
--->
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <title>Dashboard</title>
-    <meta name="description" content="A responsive bootstrap 4 admin dashboard template by hencework" />
+    <meta
+      name="description"
+      content="A responsive bootstrap 4 admin dashboard template by hencework"
+    />
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="favicon.ico">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-	
-	<!-- vector map CSS -->
-	
-    <link href="/vendors/vectormap/jquery-jvectormap-2.0.3.css" rel="stylesheet" type="text/css" />
-	<link href="/vendors/apexcharts/dist/apexcharts.css" rel="stylesheet" type="text/css" />
-	
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+    <!-- vector map CSS -->
+
+    <link
+      href="/vendors/vectormap/jquery-jvectormap-2.0.3.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="/vendors/apexcharts/dist/apexcharts.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
     <!-- Toggles CSS -->
-    <link href="/vendors/jquery-toggles/css/toggles.css" rel="stylesheet" type="text/css">
-    <link href="/vendors/jquery-toggles/css/themes/toggles-light.css" rel="stylesheet" type="text/css">
-	
-	<!-- Toastr CSS -->
-    <link href="/vendors/jquery-toast-plugin/dist/jquery.toast.min.css" rel="stylesheet" type="text/css">
+    <link
+      href="/vendors/jquery-toggles/css/toggles.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="/vendors/jquery-toggles/css/themes/toggles-light.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <!-- Toastr CSS -->
+    <link
+      href="/vendors/jquery-toast-plugin/dist/jquery.toast.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
 
     <!-- Custom CSS -->
-    <link href="/dist/css/style.css" rel="stylesheet" type="text/css">
-    <link href="/css/dashboard.css" rel="stylesheet" type="text/css">
+    <link href="/dist/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="/css/dashboard.css" rel="stylesheet" type="text/css" />
 
     <!-- jQuery -->
     <script src="/vendors/jquery/dist/jquery.min.js"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <Preloader>
-    <div class="preloader-it">
+      <div class="preloader-it">
         <div class="loader-pendulums"></div>
-    </div>
+      </div>
     </Preloader>
-	
-	<!-- HK Wrapper -->
-	<div class="hk-wrapper hk-vertical-nav">
 
-        <%- include('topbar'); -%>
+    <!-- HK Wrapper -->
+    <div class="hk-wrapper hk-vertical-nav">
+      <%- include('topbar'); -%> <%- include('sidebar'); -%>
 
-        <%- include('sidebar'); -%>
+      <!-- Main Content -->
+      <div class="hk-pg-wrapper">
+        <!-- Container -->
+        <div class="container mt-xl-50 mt-sm-30 mt-15">
+          <!-- Title -->
+          <div class="hk-pg-header align-items-top mb-md-60">
+            <div class="w-parent">
+              <h2 class="welcome">Welcome to WHEALTHWAY!</h2>
+            </div>
+          </div>
+          <!-- /Title -->
 
-        <!-- Main Content -->
-        <div class="hk-pg-wrapper">
-			<!-- Container -->
-            <div class="container mt-xl-50 mt-sm-30 mt-15">
-                <!-- Title -->
-                <div class="hk-pg-header align-items-top">
-                    <div>
-						<h2 class="hk-pg-title font-weight-600 mb-10">Welcome to WHEALTHWAY!</h2>
-						<!-- <p>Hospital Admin Dashboard Template</p> -->
-					</div>
-					<!-- <div class="d-flex">
-                        <form action="">
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <input class="form-control rounded-input" placeholder="Search" type="text">
-                                    <div class="input-group-append">
-                                        <span class="input-group-text"><i class="glyphicon glyphicon-search"></i></span>
-                                    </div>
-                                </div>
+          <!-- Row -->
+          <div class="row">
+            <div class="col-xl-12">
+              <div class="hk-row">
+                <div class="col-lg-12">
+                  <div class="hk-row mb-15">
+                    <div
+                      class="col-sm-12 col-md-4 d-flex justify-content-center"
+                    >
+                      <div
+                        class="card card-sm p-4"
+                        style="
+                          background: #fff;
+                          box-shadow: 0px 12px 23px rgba(62, 73, 84, 0.04);
+                          border-radius: 20px;
+                          border-color: #d8ffe9;
+                          width: 85%;
+                        "
+                      >
+                        <div class="card-body">
+                          <div class="d-flex justify-content-center mb-5">
+                            <div>
+                              <div style="text-align: center" class="my-3">
+                                <img
+                                  src="/images/Matching.png"
+                                  style="
+                                    width: 68%;
+                                    border-radius: 50%;
+                                    border: 3px solid #40c198;
+                                  "
+                                  alt="IMG-NA"
+                                />
+                              </div>
+                              <h4
+                                class="d-block display-5 my-5 text-center"
+                                style="
+                                  color: #000000;
+                                  font-family: Montserrat, Sans-serif;
+                                  font-size: 1.2rem;
+                                  font-weight: bold;
+                                  line-height: 0.4em;
+                                  letter-spacing: -0.3px;
+                                "
+                              >
+                                Matching
+                              </h4>
+                              <p
+                                class="d-block font-15 my-4"
+                                style="
+                                  text-align: center;
+                                  color: #4b4d4f;
+                                  font-family: Montserrat, Sans-serif;
+                                  font-size: 0.9rem;
+                                  font-weight: 500;
+                                  font-style: normal;
+                                  line-height: 1.4em;
+                                  text-align: center;
+                                "
+                              >
+                                Likeminded people who understands
+                              </p>
                             </div>
-                        </form>
-                        <div style="margin-left: 8px; background: #FF6D4C; border-radius: 50px; width: 36px;height: 36px;">
-                            <img src="/images/setting.png" alt="" style="height: 26px; width: 26px; margin-left: 4.5px; margin-top: 4.5px;">
+                          </div>
                         </div>
-					</div> -->
-                </div>
-                <!-- /Title -->
-
-                <!-- Row -->
-                <div class="row">
-                    <div class="col-xl-12">
-						<div class="hk-row">
-							<div class="col-lg-12">
-								<div class="hk-row mb-15">							
-									<div class="col-sm-12 col-xl-4 d-flex justify-content-center">
-										<div class="card card-sm" style="background: linear-gradient(113.24deg, #FF968F 16.01%, #E84141 106.71%);
-                                        box-shadow: 0px 12px 23px rgba(62, 73, 84, 0.04);
-                                        border-radius: 20px; width: 70%;">
-											<div class="card-body">
-												<div class="d-flex justify-content-center mb-5">
-													<div>
-                                                        <div style="text-align: center;">
-                                                            <img src="/images/find-a-friend.png" style="
-                                                            width: 65%;
-                                                            border-radius: 50%;" alt="IMG-NA">
-                                                            <!-- <span class="badge badge-primary  badge-sm">+10%</span> -->
-                                                            
-                                                        </div>
-                                                        <span class="d-block display-5 mb-5" style="
-                                                        font-size: 25px;
-                                                        font-family: 'Montserrat', sans-serif;
-                                                        font-weight: 700;
-                                                        letter-spacing: 0em;
-                                                        text-align: center;
-                                                        color: #fff;
-                                                        ">Suggestions<br></span>
-														<span class="d-block font-15" style="font-weight: 100;
-                                                        font-size: 15px;
-                                                        line-height: 24px;color: #fff; text-align: center;">A person to speak to<br> who understands</span>
-                                                        <!-- <small class="d-block">172,458 Target Users</small> -->
-													</div>
-												</div>
-												
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-12 col-xl-4 d-flex justify-content-center" style="cursor: pointer;" onclick="window.location.href='/activity'">
-										<div class="card card-sm" style="background: linear-gradient(121deg, #7EEB7C 31.23%, #36C95F 108.38%);
-                                        box-shadow: 0px 12px 23px rgba(62, 73, 84, 0.04);
-                                        border-radius: 20px; width: 70%;">
-											<div class="card-body">
-												<div class="d-flex justify-content-center mb-5">
-													<div>
-                                                        <div style="text-align: center;">
-                                                            <img src="/images/find-a-professional.png" style="
-                                                            width: 55%;
-                                                            border-radius: 50%;" alt="IMG-NA">
-                                                            <!-- <span class="badge badge-primary  badge-sm">+10%</span> -->
-                                                            
-                                                        </div>
-                                                        <span class="d-block display-5 mb-5" style="
-                                                        font-size: 25px;
-                                                        font-family: 'Montserrat', sans-serif;
-                                                        font-weight: 700;
-                                                        letter-spacing: 0em;
-                                                        text-align: center;
-                                                        color: #fff;
-                                                        ">See<br>Activity</span>
-														<span class="d-block font-15" style="font-weight: 100;
-                                                        font-size: 15px;
-                                                        line-height: 24px;color: #fff; text-align: center;">People post,<br>watch, like, share</span>
-                                                        <!-- <small class="d-block">172,458 Target Users</small> -->
-													</div>
-												</div>
-												
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-12 col-xl-4 d-flex justify-content-center" style="cursor: pointer;" onclick="window.location.href='/chats'">
-										<div class="card card-sm" style="background: linear-gradient(121deg, #92BDFF 31.23%, #369DC9 108.38%);
-                                        box-shadow: 0px 12px 23px rgba(62, 73, 84, 0.04);
-                                        border-radius: 20px; width: 70%;">
-											<div class="card-body">
-												<div class="d-flex justify-content-center mb-5">
-													<div class="mb-3">
-                                                        <div style="text-align: center;">
-                                                            <img src="/images/find-products.png" style="
-                                                            width: 65%;
-                                                            border-radius: 50%;" alt="IMG-NA">
-                                                            <!-- <span class="badge badge-primary  badge-sm">+10%</span> -->
-                                                            
-                                                        </div>
-                                                        <span class="d-block display-5 mb-5" style="
-                                                        font-size: 25px;
-                                                        font-family: 'Montserrat', sans-serif;
-                                                        font-weight: 700;
-                                                        letter-spacing: 0em;
-                                                        text-align: center;
-                                                        color: #fff;
-                                                        ">Chat<br></span>
-														<span class="d-block font-15" style="font-weight: 100;
-                                                        font-size: 15px;
-                                                        line-height: 24px;color: #fff; text-align: center;">Have a word<br>with Community</span>
-                                                        <!-- <small class="d-block">172,458 Target Users</small> -->
-													</div>
-												</div>
-												
-											</div>
-										</div>
-									</div>
-								</div>
-								
-                                <!-- <div class="hk-row mb-15">
-                                    <div class="col-lg-12">
-                                        <div class="card card-sm" style="background: #FFFFFF;
-                                                                        box-shadow: 0px 12px 23px rgba(62, 73, 84, 0.04);
-                                                                        border-radius: 20px;height:350px;">
-                                            <div class="card-body px-3" style="overflow: hidden;">
-                                                <div class="d-flex justify-content-between mb-5">
-                                                    <div>
-                                                        <span class="d-block font-15 text-dark font-weight-600" style="font-family: Poppins;
-                                                                                font-style: normal;
-                                                                                font-weight: 500;
-                                                                                font-size: 20px;
-                                                                                line-height: 30px;
-                                                                                
-                                                                                color: #000000;">Top Rated Doctors</span>
-                                                    </div>
-                                                    <div class="float-right">
-                                                        <span style="font-family: Poppins;
-                                                                                font-style: normal;
-                                                                                font-weight: 500;
-                                                                                font-size: 16px;
-                                                                                line-height: 24px;
-                                                                                
-                                                                                color: #2BC155;">View More >></span>
-                                                    </div>
-                                                </div>
-                                                <div style="position:absolute;top: 120px;left:-25px;background: #FFFFFF;
-                                                box-shadow: 0px 13px 25px rgba(0, 0, 0, 0.13);
-                                                border-radius: 14px;height: 40px;width: 50px;text-align: center;">
-                                                    <img style="position:relative;top:25%" src="/images/left-arr.png" alt="">
-                                                </div>
-                                                <div style="position:absolute;top: 120px;right:-25px;background: #FFFFFF;
-                                                box-shadow: 0px 13px 25px rgba(0, 0, 0, 0.13);
-                                                border-radius: 14px;height: 40px;width: 50px;text-align: center;">
-                                                    <img style="position:relative;top:25%" src="/images/right-arr.png" alt="">
-                                                </div>
-                                                <div class="row mx-4">
-                                                    <div class="col">
-                                                        <div class="" style="text-align: center;width: 182px;height: 270px;border-radius: 14px;border:0;">
-                                                            <img class="card-img-top" style="width: 126px;height: 138px;border-radius: 15px;" src="/dist/img/cropper.jpg" alt="Card image cap">
-                                                            <div style="height: 10px;">
-                                                                <img src="/images/rating.png" style="position:relative;top: -20px;width: 50px;height: 23px;" alt="">
-                                                            </div>
-                                                            <div class="">
-                                                                <h5 class="card-title" style="font-family: Poppins;
-                                                                font-style: normal;
-                                                                font-weight: 600;
-                                                                font-size: 16px;
-                                                                line-height: 24px;
-                                                                /* identical to box height */
-                                                                
-                                                                text-align: center;
-                                                                
-                                                                color: #000000;">Dr. Alexandro Jr.</h5>
-                                                                <h6 class="card-subtitle mb-2" style="font-family: Poppins;
-                                                                font-style: normal;
-                                                                font-weight: normal;
-                                                                font-size: 14px;
-                                                                line-height: 21px;
-                                                                /* identical to box height */
-                                                                
-                                                                text-align: center;
-                                                                
-                                                                color: #04A547;">Dentist</h6>
-                                                            </div>
-                                                            <div class="">
-                                                                <p class="card-text" style="font-family: Poppins;
-                                                                font-style: normal;
-                                                                font-weight: normal;
-                                                                font-size: 12px;
-                                                                line-height: 18px;
-                                                                text-align: center;
-                                                                
-                                                                color: #969BA0;
-                                                                ">795 Folsom Ave, Suite 600 San Francisco, CADGE 94107</p>
-                                                            </div>
-                                                        </div>                                                
-
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="" style="text-align: center;width: 182px;height: 270px;border-radius: 14px;border:0;">
-                                                            <img class="card-img-top" style="width: 126px;height: 138px;border-radius: 15px;" src="/dist/img/cropper.jpg" alt="Card image cap">
-                                                            <div style="height: 10px;">
-                                                                <img src="/images/rating.png" style="position:relative;top: -20px;width: 50px;height: 23px;" alt="">
-                                                            </div>
-                                                            <div class="">
-                                                                <h5 class="card-title" style="font-family: Poppins;
-                                                                font-style: normal;
-                                                                font-weight: 600;
-                                                                font-size: 16px;
-                                                                line-height: 24px;
-                                                                /* identical to box height */
-                                                                
-                                                                text-align: center;
-                                                                
-                                                                color: #000000;">Dr. Alexandro Jr.</h5>
-                                                                <h6 class="card-subtitle mb-2" style="font-family: Poppins;
-                                                                font-style: normal;
-                                                                font-weight: normal;
-                                                                font-size: 14px;
-                                                                line-height: 21px;
-                                                                /* identical to box height */
-                                                                
-                                                                text-align: center;
-                                                                
-                                                                color: #04A547;">Dentist</h6>
-                                                            </div>
-                                                            <div class="">
-                                                                <p class="card-text" style="font-family: Poppins;
-                                                                font-style: normal;
-                                                                font-weight: normal;
-                                                                font-size: 12px;
-                                                                line-height: 18px;
-                                                                text-align: center;
-                                                                
-                                                                color: #969BA0;
-                                                                ">795 Folsom Ave, Suite 600 San Francisco, CADGE 94107</p>
-                                                            </div>
-                                                        </div>                                                
-
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="" style="text-align: center;width: 182px;height: 270px;border-radius: 14px;border:0;">
-                                                            <img class="card-img-top" style="width: 126px;height: 138px;border-radius: 15px;" src="/dist/img/cropper.jpg" alt="Card image cap">
-                                                            <div style="height: 10px;">
-                                                                <img src="/images/rating.png" style="position:relative;top: -20px;width: 50px;height: 23px;" alt="">
-                                                            </div>
-                                                            <div class="">
-                                                                <h5 class="card-title" style="font-family: Poppins;
-                                                                font-style: normal;
-                                                                font-weight: 600;
-                                                                font-size: 16px;
-                                                                line-height: 24px;
-                                                                /* identical to box height */
-                                                                
-                                                                text-align: center;
-                                                                
-                                                                color: #000000;">Dr. Alexandro Jr.</h5>
-                                                                <h6 class="card-subtitle mb-2" style="font-family: Poppins;
-                                                                font-style: normal;
-                                                                font-weight: normal;
-                                                                font-size: 14px;
-                                                                line-height: 21px;
-                                                                /* identical to box height */
-                                                                
-                                                                text-align: center;
-                                                                
-                                                                color: #04A547;">Dentist</h6>
-                                                            </div>
-                                                            <div class="">
-                                                                <p class="card-text" style="font-family: Poppins;
-                                                                font-style: normal;
-                                                                font-weight: normal;
-                                                                font-size: 12px;
-                                                                line-height: 18px;
-                                                                text-align: center;
-                                                                
-                                                                color: #969BA0;
-                                                                ">795 Folsom Ave, Suite 600 San Francisco, CADGE 94107</p>
-                                                            </div>
-                                                        </div>                                                
-
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="" style="text-align: center;width: 182px;height: 270px;border-radius: 14px;border:0;">
-                                                            <img class="card-img-top" style="width: 126px;height: 138px;border-radius: 15px;" src="/dist/img/cropper.jpg" alt="Card image cap">
-                                                            <div style="height: 10px;">
-                                                                <img src="/images/rating.png" style="position:relative;top: -20px;width: 50px;height: 23px;" alt="">
-                                                            </div>
-                                                            <div class="">
-                                                                <h5 class="card-title" style="font-family: Poppins;
-                                                                font-style: normal;
-                                                                font-weight: 600;
-                                                                font-size: 16px;
-                                                                line-height: 24px;
-                                                                /* identical to box height */
-                                                                
-                                                                text-align: center;
-                                                                
-                                                                color: #000000;">Dr. Alexandro Jr.</h5>
-                                                                <h6 class="card-subtitle mb-2" style="font-family: Poppins;
-                                                                font-style: normal;
-                                                                font-weight: normal;
-                                                                font-size: 14px;
-                                                                line-height: 21px;
-                                                                /* identical to box height */
-                                                                
-                                                                text-align: center;
-                                                                
-                                                                color: #04A547;">Dentist</h6>
-                                                            </div>
-                                                            <div class="">
-                                                                <p class="card-text" style="font-family: Poppins;
-                                                                font-style: normal;
-                                                                font-weight: normal;
-                                                                font-size: 12px;
-                                                                line-height: 18px;
-                                                                text-align: center;
-                                                                
-                                                                color: #969BA0;
-                                                                ">795 Folsom Ave, Suite 600 San Francisco, CADGE 94107</p>
-                                                            </div>
-                                                        </div>                                                
-
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="" style="text-align: center;width: 182px;height: 270px;border-radius: 14px;border:0;">
-                                                            <img class="card-img-top" style="width: 126px;height: 138px;border-radius: 15px;" src="/dist/img/cropper.jpg" alt="Card image cap">
-                                                            <div style="height: 10px;">
-                                                                <img src="/images/rating.png" style="position:relative;top: -20px;width: 50px;height: 23px;" alt="">
-                                                            </div>
-                                                            <div class="">
-                                                                <h5 class="card-title" style="font-family: Poppins;
-                                                                font-style: normal;
-                                                                font-weight: 600;
-                                                                font-size: 16px;
-                                                                line-height: 24px;
-                                                                /* identical to box height */
-                                                                
-                                                                text-align: center;
-                                                                
-                                                                color: #000000;">Dr. Alexandro Jr.</h5>
-                                                                <h6 class="card-subtitle mb-2" style="font-family: Poppins;
-                                                                font-style: normal;
-                                                                font-weight: normal;
-                                                                font-size: 14px;
-                                                                line-height: 21px;
-                                                                /* identical to box height */
-                                                                
-                                                                text-align: center;
-                                                                
-                                                                color: #04A547;">Dentist</h6>
-                                                            </div>
-                                                            <div class="">
-                                                                <p class="card-text" style="font-family: Poppins;
-                                                                font-style: normal;
-                                                                font-weight: normal;
-                                                                font-size: 12px;
-                                                                line-height: 18px;
-                                                                text-align: center;
-                                                                
-                                                                color: #969BA0;
-                                                                ">795 Folsom Ave, Suite 600 San Francisco, CADGE 94107</p>
-                                                            </div>
-                                                        </div>                                                
-
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="" style="text-align: center;width: 182px;height: 270px;border-radius: 14px;border:0;">
-                                                            <img class="card-img-top" style="width: 126px;height: 138px;border-radius: 15px;" src="/dist/img/cropper.jpg" alt="Card image cap">
-                                                            <div style="height: 10px;">
-                                                                <img src="/images/rating.png" style="position:relative;top: -20px;width: 50px;height: 23px;" alt="">
-                                                            </div>
-                                                            <div class="">
-                                                                <h5 class="card-title" style="font-family: Poppins;
-                                                                font-style: normal;
-                                                                font-weight: 600;
-                                                                font-size: 16px;
-                                                                line-height: 24px;
-                                                                /* identical to box height */
-                                                                
-                                                                text-align: center;
-                                                                
-                                                                color: #000000;">Dr. Alexandro Jr.</h5>
-                                                                <h6 class="card-subtitle mb-2" style="font-family: Poppins;
-                                                                font-style: normal;
-                                                                font-weight: normal;
-                                                                font-size: 14px;
-                                                                line-height: 21px;
-                                                                /* identical to box height */
-                                                                
-                                                                text-align: center;
-                                                                
-                                                                color: #04A547;">Dentist</h6>
-                                                            </div>
-                                                            <div class="">
-                                                                <p class="card-text" style="font-family: Poppins;
-                                                                font-style: normal;
-                                                                font-weight: normal;
-                                                                font-size: 12px;
-                                                                line-height: 18px;
-                                                                text-align: center;
-                                                                
-                                                                color: #969BA0;
-                                                                ">795 Folsom Ave, Suite 600 San Francisco, CADGE 94107</p>
-                                                            </div>
-                                                        </div>                                                
-
-                                                    </div>
-                                                </div>
-                                                                                               
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="hk-row mb-15">
-                                    <div class="col-lg-12">
-                                        <div class="card card-sm" style="background: #FFFFFF;
-                                                                        box-shadow: 0px 12px 23px rgba(62, 73, 84, 0.04);
-                                                                        border-radius: 20px;height:350px;">
-                                            <div class="card-body px-3" style="overflow: hidden;">
-                                                <div class="d-flex justify-content-between mb-5">
-                                                    <div>
-                                                        <span class="d-block font-15 text-dark font-weight-600" style="font-family: Poppins;
-                                                                                font-style: normal;
-                                                                                font-weight: 500;
-                                                                                font-size: 20px;
-                                                                                line-height: 30px;
-                                                                                
-                                                                                color: #000000;">Top Rated Doctors</span>
-                                                    </div>
-                                                    <div class="float-right">
-                                                        <span style="font-family: Poppins;
-                                                                                font-style: normal;
-                                                                                font-weight: 500;
-                                                                                font-size: 16px;
-                                                                                line-height: 24px;
-                                                                                
-                                                                                color: #2BC155;">View More >></span>
-                                                    </div>
-                                                </div>
-                                                <div style="position:absolute;top: 120px;left:-25px;background: #FFFFFF;
-                                                box-shadow: 0px 13px 25px rgba(0, 0, 0, 0.13);
-                                                border-radius: 14px;height: 40px;width: 50px;text-align: center;">
-                                                    <img style="position:relative;top:25%" src="/images/left-arr.png" alt="">
-                                                </div>
-                                                <div style="position:absolute;top: 120px;right:-25px;background: #FFFFFF;
-                                                box-shadow: 0px 13px 25px rgba(0, 0, 0, 0.13);
-                                                border-radius: 14px;height: 40px;width: 50px;text-align: center;">
-                                                    <img style="position:relative;top:25%" src="/images/right-arr.png" alt="">
-                                                </div>
-                                                <div class="row mx-4">
-                                                    <div class="col">
-                                                        <div class="" style="text-align: center;width: 182px;height: 270px;border-radius: 14px;border:0;">
-                                                            <img class="card-img-top" style="width: 126px;height: 138px;border-radius: 15px;" src="/dist/img/cropper.jpg" alt="Card image cap">
-                                                            <div style="height: 10px;">
-                                                                <img src="/images/rating.png" style="position:relative;top: -20px;width: 50px;height: 23px;" alt="">
-                                                            </div>
-                                                            <div class="">
-                                                                <h5 class="card-title" style="font-family: Poppins;
-                                                                font-style: normal;
-                                                                font-weight: 600;
-                                                                font-size: 16px;
-                                                                line-height: 24px;
-                                                                /* identical to box height */
-                                                                
-                                                                text-align: center;
-                                                                
-                                                                color: #000000;">Dr. Alexandro Jr.</h5>
-                                                                <h6 class="card-subtitle mb-2" style="font-family: Poppins;
-                                                                font-style: normal;
-                                                                font-weight: normal;
-                                                                font-size: 14px;
-                                                                line-height: 21px;
-                                                                /* identical to box height */
-                                                                
-                                                                text-align: center;
-                                                                
-                                                                color: #04A547;">Dentist</h6>
-                                                            </div>
-                                                            <div class="">
-                                                                <p class="card-text" style="font-family: Poppins;
-                                                                font-style: normal;
-                                                                font-weight: normal;
-                                                                font-size: 12px;
-                                                                line-height: 18px;
-                                                                text-align: center;
-                                                                
-                                                                color: #969BA0;
-                                                                ">795 Folsom Ave, Suite 600 San Francisco, CADGE 94107</p>
-                                                            </div>
-                                                        </div>                                                
-
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="" style="text-align: center;width: 182px;height: 270px;border-radius: 14px;border:0;">
-                                                            <img class="card-img-top" style="width: 126px;height: 138px;border-radius: 15px;" src="/dist/img/cropper.jpg" alt="Card image cap">
-                                                            <div style="height: 10px;">
-                                                                <img src="/images/rating.png" style="position:relative;top: -20px;width: 50px;height: 23px;" alt="">
-                                                            </div>
-                                                            <div class="">
-                                                                <h5 class="card-title" style="font-family: Poppins;
-                                                                font-style: normal;
-                                                                font-weight: 600;
-                                                                font-size: 16px;
-                                                                line-height: 24px;
-                                                                /* identical to box height */
-                                                                
-                                                                text-align: center;
-                                                                
-                                                                color: #000000;">Dr. Alexandro Jr.</h5>
-                                                                <h6 class="card-subtitle mb-2" style="font-family: Poppins;
-                                                                font-style: normal;
-                                                                font-weight: normal;
-                                                                font-size: 14px;
-                                                                line-height: 21px;
-                                                                /* identical to box height */
-                                                                
-                                                                text-align: center;
-                                                                
-                                                                color: #04A547;">Dentist</h6>
-                                                            </div>
-                                                            <div class="">
-                                                                <p class="card-text" style="font-family: Poppins;
-                                                                font-style: normal;
-                                                                font-weight: normal;
-                                                                font-size: 12px;
-                                                                line-height: 18px;
-                                                                text-align: center;
-                                                                
-                                                                color: #969BA0;
-                                                                ">795 Folsom Ave, Suite 600 San Francisco, CADGE 94107</p>
-                                                            </div>
-                                                        </div>                                                
-
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="" style="text-align: center;width: 182px;height: 270px;border-radius: 14px;border:0;">
-                                                            <img class="card-img-top" style="width: 126px;height: 138px;border-radius: 15px;" src="/dist/img/cropper.jpg" alt="Card image cap">
-                                                            <div style="height: 10px;">
-                                                                <img src="/images/rating.png" style="position:relative;top: -20px;width: 50px;height: 23px;" alt="">
-                                                            </div>
-                                                            <div class="">
-                                                                <h5 class="card-title" style="font-family: Poppins;
-                                                                font-style: normal;
-                                                                font-weight: 600;
-                                                                font-size: 16px;
-                                                                line-height: 24px;
-                                                                /* identical to box height */
-                                                                
-                                                                text-align: center;
-                                                                
-                                                                color: #000000;">Dr. Alexandro Jr.</h5>
-                                                                <h6 class="card-subtitle mb-2" style="font-family: Poppins;
-                                                                font-style: normal;
-                                                                font-weight: normal;
-                                                                font-size: 14px;
-                                                                line-height: 21px;
-                                                                /* identical to box height */
-                                                                
-                                                                text-align: center;
-                                                                
-                                                                color: #04A547;">Dentist</h6>
-                                                            </div>
-                                                            <div class="">
-                                                                <p class="card-text" style="font-family: Poppins;
-                                                                font-style: normal;
-                                                                font-weight: normal;
-                                                                font-size: 12px;
-                                                                line-height: 18px;
-                                                                text-align: center;
-                                                                
-                                                                color: #969BA0;
-                                                                ">795 Folsom Ave, Suite 600 San Francisco, CADGE 94107</p>
-                                                            </div>
-                                                        </div>                                                
-
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="" style="text-align: center;width: 182px;height: 270px;border-radius: 14px;border:0;">
-                                                            <img class="card-img-top" style="width: 126px;height: 138px;border-radius: 15px;" src="/dist/img/cropper.jpg" alt="Card image cap">
-                                                            <div style="height: 10px;">
-                                                                <img src="/images/rating.png" style="position:relative;top: -20px;width: 50px;height: 23px;" alt="">
-                                                            </div>
-                                                            <div class="">
-                                                                <h5 class="card-title" style="font-family: Poppins;
-                                                                font-style: normal;
-                                                                font-weight: 600;
-                                                                font-size: 16px;
-                                                                line-height: 24px;
-                                                                /* identical to box height */
-                                                                
-                                                                text-align: center;
-                                                                
-                                                                color: #000000;">Dr. Alexandro Jr.</h5>
-                                                                <h6 class="card-subtitle mb-2" style="font-family: Poppins;
-                                                                font-style: normal;
-                                                                font-weight: normal;
-                                                                font-size: 14px;
-                                                                line-height: 21px;
-                                                                /* identical to box height */
-                                                                
-                                                                text-align: center;
-                                                                
-                                                                color: #04A547;">Dentist</h6>
-                                                            </div>
-                                                            <div class="">
-                                                                <p class="card-text" style="font-family: Poppins;
-                                                                font-style: normal;
-                                                                font-weight: normal;
-                                                                font-size: 12px;
-                                                                line-height: 18px;
-                                                                text-align: center;
-                                                                
-                                                                color: #969BA0;
-                                                                ">795 Folsom Ave, Suite 600 San Francisco, CADGE 94107</p>
-                                                            </div>
-                                                        </div>                                                
-
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="" style="text-align: center;width: 182px;height: 270px;border-radius: 14px;border:0;">
-                                                            <img class="card-img-top" style="width: 126px;height: 138px;border-radius: 15px;" src="/dist/img/cropper.jpg" alt="Card image cap">
-                                                            <div style="height: 10px;">
-                                                                <img src="/images/rating.png" style="position:relative;top: -20px;width: 50px;height: 23px;" alt="">
-                                                            </div>
-                                                            <div class="">
-                                                                <h5 class="card-title" style="font-family: Poppins;
-                                                                font-style: normal;
-                                                                font-weight: 600;
-                                                                font-size: 16px;
-                                                                line-height: 24px;
-                                                                /* identical to box height */
-                                                                
-                                                                text-align: center;
-                                                                
-                                                                color: #000000;">Dr. Alexandro Jr.</h5>
-                                                                <h6 class="card-subtitle mb-2" style="font-family: Poppins;
-                                                                font-style: normal;
-                                                                font-weight: normal;
-                                                                font-size: 14px;
-                                                                line-height: 21px;
-                                                                /* identical to box height */
-                                                                
-                                                                text-align: center;
-                                                                
-                                                                color: #04A547;">Dentist</h6>
-                                                            </div>
-                                                            <div class="">
-                                                                <p class="card-text" style="font-family: Poppins;
-                                                                font-style: normal;
-                                                                font-weight: normal;
-                                                                font-size: 12px;
-                                                                line-height: 18px;
-                                                                text-align: center;
-                                                                
-                                                                color: #969BA0;
-                                                                ">795 Folsom Ave, Suite 600 San Francisco, CADGE 94107</p>
-                                                            </div>
-                                                        </div>                                                
-
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="" style="text-align: center;width: 182px;height: 270px;border-radius: 14px;border:0;">
-                                                            <img class="card-img-top" style="width: 126px;height: 138px;border-radius: 15px;" src="/dist/img/cropper.jpg" alt="Card image cap">
-                                                            <div style="height: 10px;">
-                                                                <img src="/images/rating.png" style="position:relative;top: -20px;width: 50px;height: 23px;" alt="">
-                                                            </div>
-                                                            <div class="">
-                                                                <h5 class="card-title" style="font-family: Poppins;
-                                                                font-style: normal;
-                                                                font-weight: 600;
-                                                                font-size: 16px;
-                                                                line-height: 24px;
-                                                                /* identical to box height */
-                                                                
-                                                                text-align: center;
-                                                                
-                                                                color: #000000;">Dr. Alexandro Jr.</h5>
-                                                                <h6 class="card-subtitle mb-2" style="font-family: Poppins;
-                                                                font-style: normal;
-                                                                font-weight: normal;
-                                                                font-size: 14px;
-                                                                line-height: 21px;
-                                                                /* identical to box height */
-                                                                
-                                                                text-align: center;
-                                                                
-                                                                color: #04A547;">Dentist</h6>
-                                                            </div>
-                                                            <div class="">
-                                                                <p class="card-text" style="font-family: Poppins;
-                                                                font-style: normal;
-                                                                font-weight: normal;
-                                                                font-size: 12px;
-                                                                line-height: 18px;
-                                                                text-align: center;
-                                                                
-                                                                color: #969BA0;
-                                                                ">795 Folsom Ave, Suite 600 San Francisco, CADGE 94107</p>
-                                                            </div>
-                                                        </div>                                                
-
-                                                    </div>
-                                                </div>
-                                                                                               
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
-							</div>
-							
-						</div>
-					</div>
-                </div>
-                <!-- /Row -->
-            </div>
-            <!-- /Container -->
-			
-            <!-- Footer -->
-            <div class="hk-footer-wrap container">
-                <!-- <footer class="footer">
-                    <div class="row">
-                        <div class="col-md-6 col-sm-12">
-                            <p>Pampered by<a href="https://hencework.com/" class="text-dark" target="_blank">Hencework</a> © 2019</p>
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                            <p class="d-inline-block">Follow us</p>
-                            <a href="#" class="d-inline-block btn btn-icon btn-icon-only btn-indigo btn-icon-style-4"><span class="btn-icon-wrap"><i class="fa fa-facebook"></i></span></a>
-                            <a href="#" class="d-inline-block btn btn-icon btn-icon-only btn-indigo btn-icon-style-4"><span class="btn-icon-wrap"><i class="fa fa-twitter"></i></span></a>
-                            <a href="#" class="d-inline-block btn btn-icon btn-icon-only btn-indigo btn-icon-style-4"><span class="btn-icon-wrap"><i class="fa fa-google-plus"></i></span></a>
-                        </div>
+                      </div>
                     </div>
-                </footer> -->
+                    <div
+                      class="col-sm-12 col-md-4 d-flex justify-content-center"
+                      style="cursor: pointer"
+                      onclick="window.location.href='/activity'"
+                    >
+                      <div
+                        class="card card-sm p-4"
+                        style="
+                          background: #fff;
+                          box-shadow: 0px 12px 23px rgba(62, 73, 84, 0.04);
+                          border-radius: 20px;
+                          border-color: #d8ffe9;
+                          width: 85%;
+                        "
+                      >
+                        <div class="card-body">
+                          <div class="d-flex justify-content-center mb-5">
+                            <div>
+                              <div style="text-align: center" class="my-3">
+                                <img
+                                  src="/images/Magazine.png"
+                                  style="
+                                    width: 68%;
+                                    border-radius: 50%;
+                                    border: 3px solid #40c198;
+                                  "
+                                  alt="IMG-NA"
+                                />
+                              </div>
+                              <h4
+                                class="d-block display-5 my-5 text-center"
+                                style="
+                                  color: #000000;
+                                  font-family: Montserrat, Sans-serif;
+                                  font-size: 1.2rem;
+                                  font-weight: bold;
+                                  line-height: 0.4em;
+                                  letter-spacing: -0.3px;
+                                "
+                              >
+                                Magazine
+                              </h4>
+                              <p
+                                class="d-block font-15 my-4"
+                                style="
+                                  text-align: center;
+                                  color: #4b4d4f;
+                                  font-family: Montserrat, Sans-serif;
+                                  font-size: 0.9rem;
+                                  font-weight: 500;
+                                  font-style: normal;
+                                  line-height: 1.4em;
+                                  text-align: center;
+                                "
+                              >
+                                Helpful lifestyle news, personal experiences and
+                                other useful content.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="col-sm-12 col-md-4 d-flex justify-content-center"
+                      style="cursor: pointer"
+                      onclick="window.location.href='/chats'"
+                    >
+                      <div
+                        class="card card-sm p-4"
+                        style="
+                          background: #fff;
+                          box-shadow: 0px 12px 23px rgba(62, 73, 84, 0.04);
+                          border-radius: 20px;
+                          border-color: #d8ffe9;
+                          width: 85%;
+                        "
+                      >
+                        <div class="card-body">
+                          <div class="d-flex justify-content-center mb-5">
+                            <div class="mb-3">
+                              <div style="text-align: center" class="my-3">
+                                <img
+                                  src="/images/Discussion.png"
+                                  style="
+                                    width: 68%;
+                                    border-radius: 50%;
+                                    border: 3px solid #40c198;
+                                  "
+                                  alt="IMG-NA"
+                                />
+                              </div>
+                              <h4
+                                class="d-block display-5 my-5 text-center"
+                                style="
+                                  color: #000000;
+                                  font-family: Montserrat, Sans-serif;
+                                  font-size: 1.2rem;
+                                  font-weight: bold;
+                                  line-height: 0.4em;
+                                  letter-spacing: -0.3px;
+                                "
+                              >
+                                Discussion<br />
+                              </h4>
+                              <p
+                                class="d-block font-15 my-4"
+                                style="
+                                  text-align: center;
+                                  color: #4b4d4f;
+                                  font-family: Montserrat, Sans-serif;
+                                  font-size: 0.9rem;
+                                  font-weight: 500;
+                                  font-style: normal;
+                                  line-height: 1.4em;
+                                  text-align: center;
+                                "
+                              >
+                                Group conversations with our friendly Community.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <!-- /Footer -->
+          </div>
+          <!-- /Row -->
         </div>
-        <!-- /Main Content -->
+        <!-- /Container -->
 
+        <!-- Footer -->
+        <div class="hk-footer-wrap container">
+          <footer class="footer">
+            <div class="row">
+              <div class="col-md-6 col-sm-12">
+                <p>
+                  © 2021 © 2022
+                  <a
+                    href="https://Whealthway.com/"
+                    class="text-dark"
+                    target="_blank"
+                    >Whealthway</a
+                  >
+                </p>
+              </div>
+            </div>
+          </footer>
+        </div>
+        <!-- /Footer -->
+      </div>
+      <!-- /Main Content -->
     </div>
     <!-- /HK Wrapper -->
-
 
     <!-- Bootstrap Core JavaScript -->
     <script src="/vendors/popper.js/dist/umd/popper.min.js"></script>
@@ -823,34 +319,31 @@ License: You must have a valid license purchased only from templatemonster to le
     <!-- Toggles JavaScript -->
     <script src="/vendors/jquery-toggles/toggles.min.js"></script>
     <script src="/dist/js/toggle-data.js"></script>
-	
-	<!-- Counter Animation JavaScript -->
-	<script src="/vendors/waypoints/lib/jquery.waypoints.min.js"></script>
-	<script src="/vendors/jquery.counterup/jquery.counterup.min.js"></script>
-	
-	<!-- Morris Charts JavaScript -->
+
+    <!-- Counter Animation JavaScript -->
+    <script src="/vendors/waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="/vendors/jquery.counterup/jquery.counterup.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
     <script src="/vendors/raphael/raphael.min.js"></script>
     <script src="/vendors/morris.js/morris.min.js"></script>
-	
-	<!-- EChartJS JavaScript -->
+
+    <!-- EChartJS JavaScript -->
     <script src="/vendors/echarts/dist/echarts-en.min.js"></script>
-    
-	<!-- Vector Maps JavaScript -->
+
+    <!-- Vector Maps JavaScript -->
     <script src="/vendors/vectormap/jquery-jvectormap-2.0.3.min.js"></script>
     <script src="/vendors/vectormap/jquery-jvectormap-world-mill-en.js"></script>
     <script src="/dist/js/vectormap-data.js"></script>
 
-
-	<!-- Owl JavaScript -->
+    <!-- Owl JavaScript -->
     <script src="/vendors/owl.carousel/dist/owl.carousel.min.js"></script>
-	
-	<!-- Toastr JS -->
+
+    <!-- Toastr JS -->
     <script src="/vendors/jquery-toast-plugin/dist/jquery.toast.min.js"></script>
-    
+
     <!-- Init JavaScript -->
     <script src="/dist/js/init.js"></script>
-	<script src="/dist/js/dashboard-data.js"></script>
-	
-</body>
-
+    <script src="/dist/js/dashboard-data.js"></script>
+  </body>
 </html>

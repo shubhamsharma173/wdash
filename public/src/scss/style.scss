@@ -1497,7 +1497,7 @@ $num: 0;
 	background-color:$gold_dark_1 !important;
 }
 .bg-smoke-light-5 {
-	background-color:$smoke_light_5 !important;
+	background-color:$#54C9A4 !important;
 }
 .bg-smoke-light-4 {
 	background-color:$smoke_light_4 !important;
@@ -4811,7 +4811,7 @@ button.close {
 .hk-pg-wrapper {
 	padding:57px 0 60px;
 	position:relative;
-	background:$smoke_light_5;
+	background:#54C9A4;
 	.hk-pg-header {
 		display: -webkit-box;
 		display: -ms-flexbox;
@@ -7018,9 +7018,9 @@ div.mce-menu .mce-menu-item-sep, .mce-menu-item-sep:hover {
 	}
 }
 .table-active {
-	background-color:$smoke_light_5;
+	background-color:$#54C9A4;
 	> td,>th {
-		background-color:$smoke_light_5;
+		background-color:$#54C9A4;
 	}
 }
 .table-grey,
@@ -7103,9 +7103,9 @@ div.mce-menu .mce-menu-item-sep, .mce-menu-item-sep:hover {
 	}
 }
 .table-smoke {
-	background-color:$smoke_light_5;
+	background-color:$#54C9A4;
 	> td,>th {
-		background-color:$smoke_light_5;
+		background-color:$#54C9A4;
 	}
 }
 .table-light {
@@ -10779,7 +10779,7 @@ table.dataTable {
 		color:$gold;
 	}
 	&.badge-soft-smoke {
-		background:$smoke_light_5;
+		background:$#54C9A4;
 		color:$smoke;
 	}
 	&.badge-soft-grey,
@@ -11539,7 +11539,7 @@ table.dataTable {
 	.emailapp-sidebar {
 		position: absolute;
 		width: 200px;
-		background: $smoke_light_5;
+		background: $#54C9A4;
 		left: 0;
 		z-index: 10;
 		border-right: 1px solid $light_15;
@@ -12099,7 +12099,7 @@ table.dataTable {
 	.fmapp-sidebar {
 		position: absolute;
 		width: 200px;
-		background: $smoke_light_5;
+		background: $#54C9A4;
 		left: 0;
 		z-index: 10;
 		border-right: 1px solid $light_15;
@@ -12528,7 +12528,7 @@ table.dataTable {
 .hk-pg-wrapper {
 	&.hk-auth-wrapper {
 		padding:0;
-		background:$smoke_light_5;
+		background:$#54C9A4;
 		.auth-brand {
 			display: -webkit-box;
 			display: -ms-flexbox;

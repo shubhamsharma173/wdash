@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
-    <title>Whealthway Signup</title>
+    <title>Profile</title>
 
     <!-- Favicon -->
     <!-- <link rel="shortcut icon" href="favicon.ico">
@@ -36,16 +36,57 @@
           <div class="auth-form-wrap py-50 h-100">
             <div class="auth-form w-xxl-65 w-xl-75 w-sm-90 w-xs-100">
               <div class="container">
-                <h1 class="display-4 mb-10" style="color: #f46b68">
-                  Welcome to Whealthway!
-                </h1>
-                <p class="mb-30">Signup to find your health buddy.</p>
-                <form id="regForm" onsubmit="registerUser()">
+                <div class="row">
+                  <div style="display: flex" class="col-8 mb-3">
+                    <img
+                      style="width: 50px"
+                      src="/images/user.png"
+                      alt="user"
+                      class="avatar-img rounded-circle p-1 mr-3"
+                    />
+                    <h1 class="display-4" style="color: #f46b68">
+                      Hi ! Roberto
+                    </h1>
+                  </div>
+                  <div class="col-4">
+                    <button
+                      id="edit"
+                      onclick="editinfo()"
+                      class="float-right btn btn-block"
+                      style="width: 20%; background-color: #f46b68; color: #fff"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      onclick="cancelinfo()"
+                      id="cancel"
+                      class="float-right btn btn-secondary mr-2"
+                      style="
+                        display: none;
+                        color: #fff;
+                      "
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      onclick="saveinfo()"
+                      id="save"
+                      class="float-right btn btn-primary mr-2"
+                      style="
+                        display: none;
+                        color: #fff;
+                      "
+                    >
+                      Save
+                    </button>
+                  </div>
+                </div>
+                <!-- <p class="mb-30">Signup to find your health buddy.</p> -->
+                <form id="prof" action="/register/member" method="POST">
                   <div class="row mx-0">
                     <div class="form-group col-xs col-6 px-auto">
                       <label class="mb-5">First Name</label>
                       <input
-                        required
                         class="form-control"
                         placeholder="Enter your first name"
                         type="text"
@@ -55,7 +96,6 @@
                     <div class="form-group col-xs col-6 px-auto">
                       <label class="mb-5">Last Name</label>
                       <input
-                        required
                         class="form-control"
                         placeholder="Enter your last name"
                         type="text"
@@ -66,28 +106,17 @@
                   <div class="row mx-0">
                     <div class="form-group col-xs col-6 px-auto">
                       <label class="mb-5">Date of Birth</label>
-                      <input
-                        required
-                        class="form-control"
-                        type="date"
-                        name="dob"
-                      />
+                      <input class="form-control" type="date" name="dob" />
                     </div>
                     <div class="form-group col-xs col-6 px-auto">
                       <label class="mb-5">Postal Code</label>
-                      <input
-                        required
-                        class="form-control"
-                        type="text"
-                        name="postal"
-                      />
+                      <input class="form-control" type="text" name="postal" />
                     </div>
                   </div>
                   <div class="row mx-0">
                     <div class="form-group col-xs col-6 px-auto">
                       <label class="mb-5">Email Address</label>
                       <input
-                        required
                         class="form-control"
                         placeholder="Email"
                         type="email"
@@ -97,7 +126,6 @@
                     <div class="form-group col-xs col-6 px-auto">
                       <label class="mb-5">Mobile Number</label>
                       <input
-                        required
                         class="form-control"
                         placeholder="Mobile Number"
                         type="tel"
@@ -105,12 +133,13 @@
                       />
                     </div>
                   </div>
+                  <div class="row mx-0" id="divCheckPasswordMatch"></div>
                   <div class="row mx-0">
                     <div class="form-group col-xs col-6 px-auto">
                       <label class="mb-5">Password</label>
                       <input
-                        required
                         class="form-control"
+                        onkeyup="active()"
                         name="password"
                         id="pswrd_1"
                         type="password"
@@ -120,7 +149,6 @@
                     <div class="form-group col-xs col-6 px-auto">
                       <label class="mb-5">Confirm Password</label>
                       <input
-                        required
                         class="form-control"
                         onkeyup="active_2()"
                         name="password2"
@@ -128,7 +156,6 @@
                         type="password"
                         placeholder="Confirm Password"
                       />
-                      <div class="row mx-0" id="divCheckPasswordMatch"></div>
                     </div>
                   </div>
                   <div class="row mx-0">
@@ -141,7 +168,7 @@
                           <input
                             class=""
                             type="checkbox"
-                            value="Matching"
+                            value="friend"
                             name="check1"
                             id="qfriend"
                           />
@@ -151,7 +178,7 @@
                           <input
                             class=""
                             type="checkbox"
-                            value="Magazine"
+                            value="professional"
                             name="check2"
                             id="qprof"
                           />
@@ -161,7 +188,7 @@
                           <input
                             class=""
                             type="checkbox"
-                            value="Groups"
+                            value="product"
                             name="check3"
                             id="qprod"
                           /><label class="">&nbsp; Groups</label>
@@ -173,9 +200,8 @@
                     <div class="form-group col-xs col-6 p-10 px-auto">
                       <label class="mb-5">Gender</label>
                       <select
-                        required
                         class="form-control custom-select"
-                        name="gender"
+                        name="healthIssue"
                       >
                         <option selected disabled value="">-- Select --</option>
                         <option>Male</option>
@@ -186,7 +212,6 @@
                     <div class="form-group col-xs col-6 p-10 px-auto">
                       <label class="mb-5">Marital Status</label>
                       <select
-                        required
                         class="form-control custom-select"
                         name="maritialStatus"
                       >
@@ -201,7 +226,6 @@
                     <div class="form-group col-xs col-6 p-10 px-auto">
                       <label class="mb-5">Health Issues</label>
                       <select
-                        required
                         id="other1"
                         onchange="other_1()"
                         class="form-control custom-select"
@@ -243,7 +267,6 @@
                     <div class="form-group col-6 p-10 px-auto">
                       <label class="mb-5">Personal Intrests</label>
                       <select
-                        required
                         id="other2"
                         class="form-control custom-select"
                         name="personalIntrest"
@@ -280,7 +303,7 @@
                           <input
                             class="form-control"
                             type="text"
-                            name="personal_intrest_other"
+                            name="personal_interest_other"
                           />
                         </div>
                       </div>
@@ -289,20 +312,11 @@
                   <div class="row mx-0">
                     <div class="form-group col-xs col-6 p-10 px-auto">
                       <label class="mb-5">Date of Diagnosis</label>
-                      <input
-                        required
-                        class="form-control"
-                        type="date"
-                        name="dod"
-                      />
+                      <input class="form-control" type="date" name="dod" />
                     </div>
                     <div class="form-group col-xs col-6 p-10 px-auto">
                       <label class="mb-5">Stage of Ilness</label>
-                      <select
-                        required
-                        class="form-control custom-select"
-                        name="stage"
-                      >
+                      <select class="form-control custom-select" name="stage">
                         <option selected disabled value="">-- Select --</option>
                         <option value="Recently diagnosed">
                           Recently diagnosed
@@ -338,8 +352,7 @@
                           type="radio"
                           id="mobRadio1"
                           name="customRadio1"
-                          value="Mobile"
-                          class="custom-control-input required"
+                          class="custom-control-input"
                         />
                         <label class="custom-control-label" for="mobRadio1"
                           >Mobile</label
@@ -350,8 +363,7 @@
                           type="radio"
                           id="emailRadio1"
                           name="customRadio1"
-                          value="Email"
-                          class="custom-control-input required"
+                          class="custom-control-input"
                         />
                         <label class="custom-control-label" for="emailRadio1"
                           >Email</label
@@ -362,8 +374,7 @@
                           type="radio"
                           id="bothRadio1"
                           name="customRadio1"
-                          value="Both"
-                          class="custom-control-input required"
+                          class="custom-control-input"
                         />
                         <label class="custom-control-label" for="bothRadio1"
                           >Both</label
@@ -426,8 +437,7 @@
                           type="radio"
                           id="mobRadio2"
                           name="customRadio2"
-                          value="Mobile"
-                          class="custom-control-input required"
+                          class="custom-control-input"
                         />
                         <label class="custom-control-label" for="mobRadio2"
                           >Mobile</label
@@ -438,8 +448,7 @@
                           type="radio"
                           id="emailRadio2"
                           name="customRadio2"
-                          class="custom-control-input required"
-                          value="Email"
+                          class="custom-control-input"
                         />
                         <label class="custom-control-label" for="emailRadio2"
                           >Email</label
@@ -450,8 +459,7 @@
                           type="radio"
                           id="bothRadio2"
                           name="customRadio2"
-                          class="custom-control-input required"
-                          value="Both"
+                          class="custom-control-input"
                         />
                         <label class="custom-control-label" for="bothRadio2"
                           >Both</label
@@ -459,18 +467,6 @@
                       </div>
                     </div>
                   </div>
-                  <p class="float-right">
-                    Already have an account?<a href="/login/member"> Signin</a>
-                  </p>
-                  <br />
-                  <br />
-                  <button
-                    class="float-right btn btn-block"
-                    style="width: 20%; background-color: #f46b68; color: #fff"
-                    type="submit"
-                  >
-                    Sign Up
-                  </button>
                 </form>
               </div>
             </div>
@@ -485,7 +481,7 @@
 
     <!-- jQuery -->
     <script src="/vendors/jquery/dist/jquery.min.js"></script>
-    <script src="/js/reg.js"></script>
+    <script src="/js/profile.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="/vendors/popper.js/dist/umd/popper.min.js"></script>
     <script src="/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -505,6 +501,5 @@
     <!-- Init JavaScript -->
     <script src="/dist/js/init.js"></script>
     <script src="/dist/js/login-data.js"></script>
-
   </body>
 </html>

@@ -44,8 +44,9 @@ passport.deserializeUser((user, cb) => {
   cb(null, user);
 });
 
-const home = require('./routes/home')
-app.use('/', home);
+
+const member = require('./routes/member')
+app.use('/', member);
 
 const chats = require('./routes/chats')
 app.use('/chats', chats);
@@ -53,14 +54,8 @@ app.use('/chats', chats);
 const activity = require('./routes/activity')
 app.use('/activity', activity);
 
-const admin = require('./routes/admin')
-app.use('/admin', admin);
-
-const member = require('./routes/member')
-app.use('/member', member);
-
-const supplier = require('./routes/supplier')
-app.use('/supplier', supplier);
+const profile = require('./routes/profile')
+app.use('/profile', profile);
 
 const login = require('./routes/login')
 app.use('/login', login);
@@ -73,7 +68,7 @@ app.use('/forgotPass', forgotPass);
 
   app.get("/login-fail", function (req, res) {
     req.flash('info', 'Invalid username or password, Please try again!');
-    res.redirect('/')
+    res.redirect('/login');
   })
 
   //logout request..

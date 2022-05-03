@@ -15,14 +15,19 @@ const memberSchema = new mongoose.Schema({
   check2: { type: String },
   check3: { type: String },
   healthIssue: { type: String },
+  health_issue_other: { type: String },
   maritialStatus: { type: String },
   personalIntrest: { type: String },
+  personal_intrest_other: { type: String },
+  gender: { type: String },
   dod: { type: String },
   stage: { type: String },
   check4: { type: String },
   check5: { type: String },
   check6: { type: String },
   check7: { type: String },
+  customRadio1: { type: String },
+  customRadio2: { type: String },
   createdAt : { type : Date, default: Date.now }
   }, {
     writeConcern: {
