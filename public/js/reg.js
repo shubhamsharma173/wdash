@@ -6,17 +6,7 @@ $(document).ready(function () {
   togRadios2();
   other_1();
   other_2();
-  // $.toast().reset("all");
   $("body").removeAttr("class");
-  // $.toast({
-  //   text: '<p>Registration successful, you will be soon redirected to login page.</p>',
-  //   position: " top-right",
-  //   loaderBg: "#7a5449",
-  //   class: "jq-has-icon jq-toast-success",
-  //   hideAfter: 5000,
-  //   stack: 6,
-  //   showHideTransition: "fade",
-  // });
 });
 
 function active_2() {
@@ -51,36 +41,109 @@ function other_2() {
     : $("#otherdiv2").hide();
 }
 
-function registerUser() {
+function checkValidation() {
   let password = $("#pswrd_1").val();
   let confirmPassword = $("#pswrd_2").val();
   if (password != confirmPassword) {
-    alert("Passwords do not match!");
+    /*Toaster Alert*/
+    $.toast({
+      heading: "Passwords do not match!",
+      text: "<p>Please check and try again.</p>",
+      position: "top-right",
+      loaderBg: "#F46B68",
+      class: "jq-toast-warning",
+      hideAfter: 3500,
+      stack: 6,
+      showHideTransition: "fade",
+    });
+    return false;
+  } else if (
+    $("#other1").val() == "Other" &&
+    $("#health_issue_other").val().trim() == ""
+  ) {
+    /*Toaster Alert*/
+    $.toast({
+      heading: "Empty field!",
+      text: "<p>Please enter other health issue.</p>",
+      position: "top-right",
+      loaderBg: "#F46B68",
+      class: "jq-toast-warning",
+      hideAfter: 3500,
+      stack: 6,
+      showHideTransition: "fade",
+    });
+    return false;
+  } else if (
+    $("#other2").val() == "Other" &&
+    $("#personal_intrest_other").val().trim() == ""
+  ) {
+    /*Toaster Alert*/
+    $.toast({
+      heading: "Empty field!",
+      text: "<p>Please enter other personal intrest.</p>",
+      position: "top-right",
+      loaderBg: "#F46B68",
+      class: "jq-toast-warning",
+      hideAfter: 3500,
+      stack: 6,
+      showHideTransition: "fade",
+    });
+    return false;
   } else {
+    return true;
+  }
+}
+
+function registerUser() {
+  if (checkValidation()) {
     $.ajax({
       type: "POST",
       url: "/register/member",
       data: $("#regForm").serialize(), // serializes the form's elements.
       success: function (data) {
         if (data == "success") {
-          // $.toast().reset("all");
           $("body").removeAttr("class");
-          alert('Registration successful, you will be soon redirected to login page.');
-          // $.toast({
-          //   text: '<p>Registration successful, you will be soon redirected to login page.</p>',
-          //   position: "top-right",
-          //   loaderBg: "#7a5449",
-          //   class: "jq-has-icon jq-toast-success",
-          //   hideAfter: 5000,
-          //   stack: 6,
-          //   showHideTransition: "fade",
-          // });
-          setTimeout(()=>{
+          /*Toaster Alert*/
+          $.toast({
+            heading: "Success!",
+            text: "<p>Registration successful, you will be soon redirected to login page.</p>",
+            position: "top-right",
+            loaderBg: "#F46B68",
+            class: "jq-toast-success",
+            hideAfter: 3500,
+            stack: 6,
+            showHideTransition: "fade",
+          });
+          setTimeout(() => {
             window.location.href = "/login";
-          },1500)
+          }, 1500);
         } else {
-          alert(data);
+          /*Toaster Alert*/
+          $.toast({
+            heading: "Oops!",
+            text: "<p>" + data + ".</p>",
+            position: "top-right",
+            loaderBg: "#F46B68",
+            class: "jq-toast-danger",
+            hideAfter: 3500,
+            stack: 6,
+            showHideTransition: "fade",
+          });
         }
+      },
+      error: function (error) {
+        console.log(error);
+        /*Toaster Alert*/
+        $.toast({
+          heading: "Oops!",
+          text: "<p>Something went wrong, please try again.</p>",
+          position: "top-right",
+          loaderBg: "#F46B68",
+          class: "jq-toast-danger",
+          hideAfter: 3500,
+          stack: 6,
+          showHideTransition: "fade",
+        });
       },
     });
   }

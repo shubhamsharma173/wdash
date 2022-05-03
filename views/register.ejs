@@ -12,6 +12,13 @@
     <!-- <link rel="shortcut icon" href="favicon.ico">
     <link rel="icon" href="favicon.ico" type="image/x-icon"> -->
 
+    <!-- Toastr CSS -->
+    <link
+      href="/vendors/jquery-toast-plugin/dist/jquery.toast.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
     <!-- Custom CSS -->
     <link href="/dist/css/style.css" rel="stylesheet" type="text/css" />
     <link href="/css/reg.css" rel="stylesheet" type="text/css" />
@@ -102,6 +109,7 @@
                         placeholder="Mobile Number"
                         type="tel"
                         name="mobile"
+                        maxlength="10"
                       />
                     </div>
                   </div>
@@ -236,6 +244,7 @@
                             class="form-control"
                             type="text"
                             name="health_issue_other"
+                            id="health_issue_other"
                           />
                         </div>
                       </div>
@@ -281,6 +290,7 @@
                             class="form-control"
                             type="text"
                             name="personal_intrest_other"
+                            id="personal_intrest_other"
                           />
                         </div>
                       </div>
@@ -364,6 +374,7 @@
                           name="customRadio1"
                           value="Both"
                           class="custom-control-input required"
+                          checked
                         />
                         <label class="custom-control-label" for="bothRadio1"
                           >Both</label
@@ -452,6 +463,7 @@
                           name="customRadio2"
                           class="custom-control-input required"
                           value="Both"
+                          checked
                         />
                         <label class="custom-control-label" for="bothRadio2"
                           >Both</label
@@ -499,12 +511,14 @@
     <!-- Owl JavaScript -->
     <script src="/vendors/owl.carousel/dist/owl.carousel.min.js"></script>
 
+    <!-- Toastr JS -->
+    <script src="/vendors/jquery-toast-plugin/dist/jquery.toast.min.js"></script>
+
     <!-- FeatherIcons JavaScript -->
     <script src="/dist/js/feather.min.js"></script>
 
     <!-- Init JavaScript -->
     <script src="/dist/js/init.js"></script>
     <script src="/dist/js/login-data.js"></script>
-
   </body>
 </html>

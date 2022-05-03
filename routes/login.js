@@ -9,14 +9,22 @@ function usernameToLowerCase(req, res, next) {
 }
 
 router.get("/", function (req, res) {
-  res.render("login");
+  res.render("login", { message: "" });
+});
+
+router.get("/fail", function (req, res) {
+  res.render("login", { message: "fail" });
+});
+
+router.get("/error", function (req, res) {
+  res.render("login", { message: "error" });
 });
 
 router.post(
   "/",
   usernameToLowerCase,
   passport.authenticate("local", {
-    failureRedirect: "/login-fail",
+    failureRedirect: "/login/fail",
     failureFlash: true,
   }),
   function (req, res) {
@@ -35,6 +43,7 @@ router.post(
       );
     } catch (error) {
       console.log(error);
+      res.redirect("/login/error");
     }
   }
 );

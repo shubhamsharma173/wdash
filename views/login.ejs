@@ -12,6 +12,13 @@
     <!-- <link rel="shortcut icon" href="favicon.ico">
     <link rel="icon" href="favicon.ico" type="image/x-icon"> -->
 
+    <!-- Toastr CSS -->
+    <link
+      href="/vendors/jquery-toast-plugin/dist/jquery.toast.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
     <!-- Custom CSS -->
     <link href="/dist/css/style.css" rel="stylesheet" type="text/css" />
   </head>
@@ -85,11 +92,47 @@
     <!-- Owl JavaScript -->
     <script src="/vendors/owl.carousel/dist/owl.carousel.min.js"></script>
 
+    <!-- Toastr JS -->
+    <script src="/vendors/jquery-toast-plugin/dist/jquery.toast.min.js"></script>
+
     <!-- FeatherIcons JavaScript -->
     <script src="/dist/js/feather.min.js"></script>
 
     <!-- Init JavaScript -->
     <script src="/dist/js/init.js"></script>
     <script src="/dist/js/login-data.js"></script>
+    <% if (message.length>0 && message == 'fail') { %>
+    <script>
+      $(document).ready(function () {
+        /*Toaster Alert*/
+        $.toast({
+          heading: "Oops!",
+          text: "<p>Invalid Credentials!</p>",
+          position: "top-right",
+          loaderBg: "#F46B68",
+          class: "jq-toast-danger",
+          hideAfter: 3500,
+          stack: 6,
+          showHideTransition: "fade",
+        });
+      });
+    </script>
+    <% } %> <% if (message.length>0 && message == 'error') { %>
+    <script>
+      $(document).ready(function () {
+        /*Toaster Alert*/
+        $.toast({
+          heading: "Oops!",
+          text: "<p>Something went wrong, please try again!</p>",
+          position: "top-right",
+          loaderBg: "#F46B68",
+          class: "jq-toast-danger",
+          hideAfter: 3500,
+          stack: 6,
+          showHideTransition: "fade",
+        });
+      });
+    </script>
+    <% } %>
   </body>
 </html>
