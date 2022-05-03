@@ -9,7 +9,11 @@ function usernameToLowerCase(req, res, next) {
 }
 
 router.get("/", function (req, res) {
-  res.render("login", { message: "" });
+  if (req.isAuthenticated()) {
+    res.redirect("/");
+  } else {
+    res.render("login", { message: "" });
+  }
 });
 
 router.get("/fail", function (req, res) {
