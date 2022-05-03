@@ -12,6 +12,13 @@
     <!-- <link rel="shortcut icon" href="favicon.ico">
     <link rel="icon" href="favicon.ico" type="image/x-icon"> -->
 
+    <!-- Toastr CSS -->
+    <link
+      href="/vendors/jquery-toast-plugin/dist/jquery.toast.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
     <!-- Custom CSS -->
     <link href="/dist/css/style.css" rel="stylesheet" type="text/css" />
     <link href="/css/reg.css" rel="stylesheet" type="text/css" />
@@ -45,7 +52,7 @@
                       class="avatar-img rounded-circle p-1 mr-3"
                     />
                     <h1 class="display-4" style="color: #f46b68">
-                      Hi ! Roberto
+                      Hi ! <span id="fnameHead"></span>
                     </h1>
                   </div>
                   <div class="col-4">
@@ -61,10 +68,7 @@
                       onclick="cancelinfo()"
                       id="cancel"
                       class="float-right btn btn-secondary mr-2"
-                      style="
-                        display: none;
-                        color: #fff;
-                      "
+                      style="display: none; color: #fff"
                     >
                       Cancel
                     </button>
@@ -72,17 +76,15 @@
                       onclick="saveinfo()"
                       id="save"
                       class="float-right btn btn-primary mr-2"
-                      style="
-                        display: none;
-                        color: #fff;
-                      "
+                      style="display: none; color: #fff"
                     >
                       Save
                     </button>
                   </div>
                 </div>
                 <!-- <p class="mb-30">Signup to find your health buddy.</p> -->
-                <form id="prof" action="/register/member" method="POST">
+                <form id="prof">
+                  <input type="text" id="_id" name="_id" hidden>
                   <div class="row mx-0">
                     <div class="form-group col-xs col-6 px-auto">
                       <label class="mb-5">First Name</label>
@@ -91,6 +93,7 @@
                         placeholder="Enter your first name"
                         type="text"
                         name="fName"
+                        id="fName"
                       />
                     </div>
                     <div class="form-group col-xs col-6 px-auto">
@@ -100,29 +103,21 @@
                         placeholder="Enter your last name"
                         type="text"
                         name="lName"
+                        id="lName"
                       />
                     </div>
                   </div>
                   <div class="row mx-0">
                     <div class="form-group col-xs col-6 px-auto">
                       <label class="mb-5">Date of Birth</label>
-                      <input class="form-control" type="date" name="dob" />
+                      <input class="form-control" type="date" name="dob" id="dob" />
                     </div>
                     <div class="form-group col-xs col-6 px-auto">
                       <label class="mb-5">Postal Code</label>
-                      <input class="form-control" type="text" name="postal" />
+                      <input class="form-control" type="text" name="postal" id="postal" />
                     </div>
                   </div>
                   <div class="row mx-0">
-                    <div class="form-group col-xs col-6 px-auto">
-                      <label class="mb-5">Email Address</label>
-                      <input
-                        class="form-control"
-                        placeholder="Email"
-                        type="email"
-                        name="username"
-                      />
-                    </div>
                     <div class="form-group col-xs col-6 px-auto">
                       <label class="mb-5">Mobile Number</label>
                       <input
@@ -130,68 +125,46 @@
                         placeholder="Mobile Number"
                         type="tel"
                         name="mobile"
-                      />
-                    </div>
-                  </div>
-                  <div class="row mx-0" id="divCheckPasswordMatch"></div>
-                  <div class="row mx-0">
-                    <div class="form-group col-xs col-6 px-auto">
-                      <label class="mb-5">Password</label>
-                      <input
-                        class="form-control"
-                        onkeyup="active()"
-                        name="password"
-                        id="pswrd_1"
-                        type="password"
-                        placeholder="Enter Password"
+                        id="mobile"
                       />
                     </div>
                     <div class="form-group col-xs col-6 px-auto">
-                      <label class="mb-5">Confirm Password</label>
-                      <input
-                        class="form-control"
-                        onkeyup="active_2()"
-                        name="password2"
-                        id="pswrd_2"
-                        type="password"
-                        placeholder="Confirm Password"
-                      />
-                    </div>
-                  </div>
-                  <div class="row mx-0">
-                    <div class="form-group col px-auto">
-                      <div class="row mx-0">
-                        <label class="mb-5">What are you interested in?</label>
-                      </div>
-                      <div class="row mx-0">
-                        <div class="custom-control custom-checkbox col">
-                          <input
-                            class=""
-                            type="checkbox"
-                            value="friend"
-                            name="check1"
-                            id="qfriend"
-                          />
-                          <label class="">&nbsp; Matching</label>
+                      <div class="form-group col px-auto">
+                        <div class="row mx-0">
+                          <label class="mb-5"
+                            >What are you interested in?</label
+                          >
                         </div>
-                        <div class="custom-control custom-checkbox col-5">
-                          <input
-                            class=""
-                            type="checkbox"
-                            value="professional"
-                            name="check2"
-                            id="qprof"
-                          />
-                          <label class="">&nbsp; Magazine</label>
-                        </div>
-                        <div class="custom-control custom-checkbox col">
-                          <input
-                            class=""
-                            type="checkbox"
-                            value="product"
-                            name="check3"
-                            id="qprod"
-                          /><label class="">&nbsp; Groups</label>
+                        <div class="row mx-0">
+                          <div class="custom-control custom-checkbox col">
+                            <input
+                              class=""
+                              type="checkbox"
+                              value="friend"
+                              name="check1"
+                              id="check1"
+                            />
+                            <label class="">&nbsp; Matching</label>
+                          </div>
+                          <div class="custom-control custom-checkbox col-5">
+                            <input
+                              class=""
+                              type="checkbox"
+                              value="professional"
+                              name="check2"
+                              id="check2"
+                            />
+                            <label class="">&nbsp; Magazine</label>
+                          </div>
+                          <div class="custom-control custom-checkbox col">
+                            <input
+                              class=""
+                              type="checkbox"
+                              value="product"
+                              name="check3"
+                              id="check3"
+                            /><label class="">&nbsp; Groups</label>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -201,7 +174,8 @@
                       <label class="mb-5">Gender</label>
                       <select
                         class="form-control custom-select"
-                        name="healthIssue"
+                        name="gender"
+                        id="gender"
                       >
                         <option selected disabled value="">-- Select --</option>
                         <option>Male</option>
@@ -214,6 +188,7 @@
                       <select
                         class="form-control custom-select"
                         name="maritialStatus"
+                        id="maritialStatus"
                       >
                         <option selected disabled value="">-- Select --</option>
                         <option value="Married">Married</option>
@@ -260,6 +235,7 @@
                             class="form-control"
                             type="text"
                             name="health_issue_other"
+                            id="health_issue_other"
                           />
                         </div>
                       </div>
@@ -304,6 +280,7 @@
                             class="form-control"
                             type="text"
                             name="personal_interest_other"
+                            id="personal_interest_other"
                           />
                         </div>
                       </div>
@@ -312,11 +289,11 @@
                   <div class="row mx-0">
                     <div class="form-group col-xs col-6 p-10 px-auto">
                       <label class="mb-5">Date of Diagnosis</label>
-                      <input class="form-control" type="date" name="dod" />
+                      <input class="form-control" type="date" name="dod" id="dod" />
                     </div>
                     <div class="form-group col-xs col-6 p-10 px-auto">
                       <label class="mb-5">Stage of Ilness</label>
-                      <select class="form-control custom-select" name="stage">
+                      <select class="form-control custom-select" name="stage" id="stage">
                         <option selected disabled value="">-- Select --</option>
                         <option value="Recently diagnosed">
                           Recently diagnosed
@@ -327,144 +304,6 @@
                         <option value="In recovery">In recovery</option>
                         <option value="Recovered">Recovered</option>
                       </select>
-                    </div>
-                  </div>
-                  <div class="row mx-0 mb-3">
-                    <div class="form-group col-lg-7 px-auto mb-0">
-                      <div class="custom-control custom-checkbox">
-                        <input
-                          class=""
-                          type="checkbox"
-                          value="Willing to provide details of your story?"
-                          name="check4"
-                          id="check4"
-                          onchange="togRadios1()"
-                        />
-                        <label class=""
-                          >&nbsp; Willing to provide details of your
-                          story?</label
-                        >
-                      </div>
-                    </div>
-                    <div id="rGroup1" class="form-group col-lg-5 px-auto">
-                      <div class="d-inline-block custom-control custom-radio">
-                        <input
-                          type="radio"
-                          id="mobRadio1"
-                          name="customRadio1"
-                          class="custom-control-input"
-                        />
-                        <label class="custom-control-label" for="mobRadio1"
-                          >Mobile</label
-                        >
-                      </div>
-                      <div class="d-inline-block custom-control custom-radio">
-                        <input
-                          type="radio"
-                          id="emailRadio1"
-                          name="customRadio1"
-                          class="custom-control-input"
-                        />
-                        <label class="custom-control-label" for="emailRadio1"
-                          >Email</label
-                        >
-                      </div>
-                      <div class="d-inline-block custom-control custom-radio">
-                        <input
-                          type="radio"
-                          id="bothRadio1"
-                          name="customRadio1"
-                          class="custom-control-input"
-                        />
-                        <label class="custom-control-label" for="bothRadio1"
-                          >Both</label
-                        >
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row mx-0">
-                    <div class="form-group col px-auto">
-                      <div class="custom-control custom-checkbox">
-                        <input
-                          class=""
-                          type="checkbox"
-                          value="Interested in receiving notifications?"
-                          name="check5"
-                          id="check5"
-                        />
-                        <label class=""
-                          >&nbsp; Interested in receiving notifications?</label
-                        >
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row mx-0">
-                    <div class="form-group col px-auto">
-                      <div class="custom-control custom-checkbox">
-                        <input
-                          class=""
-                          type="checkbox"
-                          value="Do you agree for your details to be stored securely?"
-                          name="check6"
-                          id="check6"
-                        />
-                        <label class=""
-                          >&nbsp; Do you agree for your details to be stored
-                          securely?</label
-                        >
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row mx-0">
-                    <div class="form-group col-lg-7 px-auto mb-0">
-                      <div class="custom-control custom-checkbox">
-                        <input
-                          class=""
-                          type="checkbox"
-                          value="Are you happy to be contacted by us?"
-                          name="check7"
-                          id="check7"
-                          onchange="togRadios2()"
-                        />
-                        <label class=""
-                          >&nbsp; Are you happy to be contacted by us?</label
-                        >
-                      </div>
-                    </div>
-                    <div id="rGroup2" class="form-group col-lg-5 px-auto">
-                      <div class="d-inline-block custom-control custom-radio">
-                        <input
-                          type="radio"
-                          id="mobRadio2"
-                          name="customRadio2"
-                          class="custom-control-input"
-                        />
-                        <label class="custom-control-label" for="mobRadio2"
-                          >Mobile</label
-                        >
-                      </div>
-                      <div class="d-inline-block custom-control custom-radio">
-                        <input
-                          type="radio"
-                          id="emailRadio2"
-                          name="customRadio2"
-                          class="custom-control-input"
-                        />
-                        <label class="custom-control-label" for="emailRadio2"
-                          >Email</label
-                        >
-                      </div>
-                      <div class="d-inline-block custom-control custom-radio">
-                        <input
-                          type="radio"
-                          id="bothRadio2"
-                          name="customRadio2"
-                          class="custom-control-input"
-                        />
-                        <label class="custom-control-label" for="bothRadio2"
-                          >Both</label
-                        >
-                      </div>
                     </div>
                   </div>
                 </form>
@@ -481,7 +320,6 @@
 
     <!-- jQuery -->
     <script src="/vendors/jquery/dist/jquery.min.js"></script>
-    <script src="/js/profile.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="/vendors/popper.js/dist/umd/popper.min.js"></script>
     <script src="/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -495,11 +333,15 @@
     <!-- Owl JavaScript -->
     <script src="/vendors/owl.carousel/dist/owl.carousel.min.js"></script>
 
+    <!-- Toastr JS -->
+    <script src="/vendors/jquery-toast-plugin/dist/jquery.toast.min.js"></script>
+
     <!-- FeatherIcons JavaScript -->
     <script src="/dist/js/feather.min.js"></script>
 
     <!-- Init JavaScript -->
     <script src="/dist/js/init.js"></script>
     <script src="/dist/js/login-data.js"></script>
+    <script src="/js/profile.js"></script>
   </body>
 </html>
