@@ -38,7 +38,7 @@
     $( document ).ready(function() {
         let lc = window.location.href.split("/");
     
-        if(lc[lc.length-1] == "home") {
+        if(lc[lc.length-1] == "") {
             $("#dashboard").addClass("activeNavItem")
         }else if(lc[lc.length-1] == "chats") {
             $("#chats").addClass("activeNavItem")
