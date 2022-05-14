@@ -223,7 +223,7 @@ function getUserPosts(pg) {
     type: "GET",
     url: "/activity/getuserposts/" + pg,
     success: function (response) {
-      console.log(response);
+    //   console.log(response);
       if (response.data.postLeftCount < 1) {
         $("#loadMore").prop("disabled", true);
         $("#loadMore").html("You are all caught up!");
