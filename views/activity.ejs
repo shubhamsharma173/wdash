@@ -1,128 +1,306 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <title>Activity feed</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png" />
 
     <!-- Toggles CSS -->
-    <link href="vendors/jquery-toggles/css/toggles.css" rel="stylesheet" type="text/css">
-    <link href="vendors/jquery-toggles/css/themes/toggles-light.css" rel="stylesheet" type="text/css">
+    <link
+      href="vendors/jquery-toggles/css/toggles.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="vendors/jquery-toggles/css/themes/toggles-light.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <!-- Toastr CSS -->
+    <link
+      href="/vendors/jquery-toast-plugin/dist/jquery.toast.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
 
     <!-- Custom CSS -->
-    <link href="dist/css/style.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="/css/dashboard.css">
+    <link href="dist/css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/css/dashboard.css" />
+    <link rel="stylesheet" type="text/css" href="/css/activity.css" />
 
     <!-- jQuery -->
     <script src="vendors/jquery/dist/jquery.min.js"></script>
-</head>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
 
-<body>
-    
-    
-	<!-- HK Wrapper -->
-	<div class="hk-wrapper hk-vertical-nav">
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-database.js"></script>
+  </head>
 
-        <%- include('topbar'); -%>
+  <body>
+    <!-- HK Wrapper -->
+    <div class="hk-wrapper hk-vertical-nav">
+      <%- include('topbar'); -%> <%- include('sidebar'); -%>
 
-        <%- include('sidebar'); -%>
+      <!-- Main Content -->
+      <div class="hk-pg-wrapper">
+        <!-- Breadcrumb -->
+        <nav class="hk-breadcrumb" aria-label="breadcrumb">
+          <ol class="breadcrumb breadcrumb-light bg-transparent">
+            <li class="breadcrumb-item"><a href="#">Pages</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Activity</li>
+          </ol>
+        </nav>
+        <!-- /Breadcrumb -->
 
-        <!-- Main Content -->
-        <div class="hk-pg-wrapper">
-            <!-- Breadcrumb -->
-            <nav class="hk-breadcrumb" aria-label="breadcrumb">
-                <ol class="breadcrumb breadcrumb-light bg-transparent">
-                    <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Activity</li>
-                </ol>
-            </nav>
-            <!-- /Breadcrumb -->
-
-            <!-- Container -->
-            <div class="container">
-                <!-- Title -->
-                <div class="hk-pg-header mb-10">
-                    <div>
-						<h4 class="hk-pg-title"><span class="pg-title-icon"><span class="feather-icon"><i data-feather="activity"></i></span></span>Activity</h4>
-                    </div>
-					<div class="d-flex dropdown">
-                        <button class="btn btn-primary btn-sm rounded-pill"><b>Create Post +</b></button>
-                    </div>
-                </div>
-                <!-- /Title -->
-
-                <!-- Row -->
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="card card-lg">
-							<div class="card-body">
-								<div class="user-activity">
-									<div class="media">
-										<div class="media-img-wrap">
-											<div class="avatar avatar-sm">
-												<img src="dist/img/avatar2.jpg" alt="user" class="avatar-img rounded-circle">
-											</div>
-										</div>
-										<div class="media-body">
-											<div>
-												<span class="d-block mb-5"><span class="font-weight-500 text-dark text-capitalize">Laura Thompson</span></span>
-												<span class="d-block font-13 mb-30">3 hours ago</span>
-											</div>
-											<div class="card d-inline-block w-sm-500p">
-                                                <div class="card-body">
-													<div class="d-flex flex-wrap">
-														<img class="rounded mb-15 mr-15" src="dist/img/img-thumb1.jpg" alt="thumb">
-														<div class="w-100">
-															<h6 class="mb-5">Team Josh Groben</h6>
-															<p>A fan club for josh groben songs</p>
-														</div>
-													</div>
-												</div>
-                                                <div class="card-footer text-muted " style="display: block;">
-                                                    <div style="display: inline-block;"><span class="text-dark">71</span> Likes</div>
-                                                    <button title="Comment" class="btn btn-xs btn-primary m-1 rounded-pill p-2 float-right" style="top: -10px; position: relative"><i data-feather="message-square"></i></button>
-													<button title="Like" class="btn btn-xs btn-primary m-1 rounded-pill p-2 float-right" style="top: -10px; position: relative"><i data-feather="thumbs-up"></i></button>
-												</div>
-                                            </div>
-										</div>
-									</div>
-									
-								</div>
-							</div>
-						</div>
-						
-					</div>
-                </div>
-                <!-- /Row -->
+        <!-- Container -->
+        <div class="container">
+          <!-- Title -->
+          <div class="hk-pg-header mb-10">
+            <div>
+              <h4 class="hk-pg-title">
+                <span class="pg-title-icon"
+                  ><span class="feather-icon"
+                    ><i data-feather="activity"></i></span></span
+                >Activity
+              </h4>
             </div>
-            <!-- /Container -->
+            <div class="d-flex dropdown">
+              <button
+                class="btn btn-primary btn-sm rounded-pill"
+                data-toggle="modal"
+                data-target="#createpostModal"
+              >
+                <b>Create Post +</b>
+              </button>
 
-            <!-- Footer -->
-            <div class="hk-footer-wrap container">
-                <footer class="footer">
-                    <div class="row">
-                        <div class="col-md-6 col-sm-12">
-                            <p>© 2021 © 2022 <a href="https://Whealthway.com/" class="text-dark" target="_blank">Whealthway</a></p>
+              <!-- Modal -->
+              <div
+                class="modal fade"
+                id="createpostModal"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="createpostModal"
+                aria-hidden="true"
+              >
+                <div
+                  class="modal-dialog modal-dialog-centered"
+                  role="document"
+                  style="max-width: 700px"
+                >
+                  <div class="modal-content">
+                    <form onsubmit="handleSubmit()" id="submitPost">
+                      <div class="modal-header">
+                        <h5 class="modal-title">New Post</h5>
+                        <button
+                          type="button"
+                          class="close"
+                          data-dismiss="modal"
+                          aria-label="Close"
+                        >
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <div
+                          class="fileinput fileinput-new input-group my-2"
+                          data-provides="fileinput"
+                        >
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">Upload</span>
+                          </div>
+                          <div
+                            class="form-control text-truncate"
+                            data-trigger="fileinput"
+                          >
+                            <i
+                              class="glyphicon glyphicon-file fileinput-exists"
+                            ></i>
+                            <span class="fileinput-filename"></span>
+                          </div>
+                          <span class="input-group-append">
+                            <span class="btn btn-primary btn-file"
+                              ><span class="fileinput-new">Select file</span
+                              ><span class="fileinput-exists">Change</span>
+                              <input
+                                accept="image/*"
+                                type="file"
+                                name="..."
+                                onchange="setFile(event)"
+                              />
+                            </span>
+                            <a
+                              href="#"
+                              class="btn btn-secondary fileinput-exists"
+                              data-dismiss="fileinput"
+                              >Remove</a
+                            >
+                          </span>
                         </div>
-                    </div>
-                </footer>
+                        <input
+                          required
+                          class="form-control my-2"
+                          placeholder="Enter title"
+                          type="text"
+                          name="title"
+                          id="title"
+                        />
+                        <input
+                          required
+                          class="form-control my-2"
+                          placeholder="Enter description"
+                          type="text"
+                          name="description"
+                          id="description"
+                        />
+                      </div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          data-dismiss="modal"
+                        >
+                          Cancel
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                          Post
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
             </div>
-            <!-- /Footer -->
+          </div>
+          <!-- /Title -->
 
+          <!-- Row -->
+          <div class="row">
+            <div class="col-xl-12">
+              <div class="card card-lg">
+                <div class="card-body">
+                  <div id="allPosts" class="user-activity">
+                    <div class="media">
+                      <div class="media-img-wrap">
+                        <div
+                          class="avatar avatar-sm"
+                          style="background: #eefff3; border-radius: 115px"
+                        >
+                          <img
+                            src="/images/user.png"
+                            alt="user"
+                            class="avatar-img rounded-circle"
+                          />
+                        </div>
+                      </div>
+                      <div class="media-body">
+                        <div>
+                          <span class="d-block mb-5"
+                            ><span
+                              class="font-weight-500 text-dark text-capitalize"
+                              >Laura Thompson</span
+                            ></span
+                          >
+                          <span class="d-block font-13 mb-30">3 hours ago</span>
+                        </div>
+                        <div class="card d-inline-block w-sm-500p">
+                          <div class="card-body">
+                            <div class="d-flex flex-wrap">
+                              <img
+                                class="rounded mb-15 mr-15"
+                                src="dist/img/img-thumb1.jpg"
+                                alt="thumb"
+                              />
+                              <div class="w-100">
+                                <h6 class="mb-5">Team Josh Groben</h6>
+                                <p>A fan club for josh groben songs</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="card-footer text-muted"
+                            style="display: block"
+                          >
+                            <div style="display: inline-block">
+                              <span class="text-dark">71</span> Likes
+                            </div>
+                            <button
+                              title="Comment"
+                              class="btn btn-xs btn-primary m-1 rounded-pill p-2 float-right"
+                              style="top: -10px; position: relative"
+                            >
+                              <i data-feather="message-square"></i>
+                            </button>
+                            <button
+                              title="Like"
+                              class="btn btn-xs btn-primary m-1 rounded-pill p-2 float-right"
+                              style="top: -10px; position: relative"
+                            >
+                              <i data-feather="thumbs-up"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-center">
+                    <button
+                      title="Load more"
+                      class="btn btn-xs btn-primary m-1 rounded-pill px-2 py-1"
+                      id="loadMore"
+                      onclick="loadMore()"
+                    >
+                      Load More ...
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /Row -->
         </div>
-        <!-- /Main Content -->
+        <!-- /Container -->
 
+        <!-- Footer -->
+        <div class="hk-footer-wrap container">
+          <footer class="footer">
+            <div class="row">
+              <div class="col-md-6 col-sm-12">
+                <p>
+                  © 2021 © 2022
+                  <a
+                    href="https://Whealthway.com/"
+                    class="text-dark"
+                    target="_blank"
+                    >Whealthway</a
+                  >
+                </p>
+              </div>
+            </div>
+          </footer>
+        </div>
+        <!-- /Footer -->
+      </div>
+      <!-- /Main Content -->
     </div>
     <!-- /HK Wrapper -->
-
 
     <!-- Bootstrap Core JavaScript -->
     <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
     <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Jasny-bootstrap  JavaScript -->
+    <script src="vendors/jasny-bootstrap/dist/js/jasny-bootstrap.min.js"></script>
 
     <!-- Slimscroll JavaScript -->
     <script src="dist/js/jquery.slimscroll.js"></script>
@@ -134,12 +312,17 @@
     <script src="vendors/jquery-toggles/toggles.min.js"></script>
     <script src="dist/js/toggle-data.js"></script>
 
+    <!-- Toastr JS -->
+    <script src="/vendors/jquery-toast-plugin/dist/jquery.toast.min.js"></script>
+
     <!-- FeatherIcons JavaScript -->
     <script src="dist/js/feather.min.js"></script>
 
+    <!-- Moment library -->
+    <script src="dist/js/moment.js"></script>
+
     <!-- Init JavaScript -->
     <script src="dist/js/init.js"></script>
-
-</body>
-
+    <script src="/js/activity.js"></script>
+  </body>
 </html>

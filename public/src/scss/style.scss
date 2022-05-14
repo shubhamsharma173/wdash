@@ -1139,7 +1139,7 @@ $num: 0;
 	background-color:$purple_light_4 !important;
 }
 .bg-purple-light-3 {
-	background-color:$purple_light_3 !important;
+	background-color:$red_light_3 !important;
 }
 .bg-purple-light-2 {
 	background-color:$purple_light_2 !important;
@@ -3384,8 +3384,8 @@ ul.list-icon {
 	}
 	&.disabled,&:disabled {
 		color:$white;
-		background-color: $purple_light_3;
-		border-color: $purple_light_3;
+		background-color: $red_light_3;
+		border-color: $red_light_3;
 	}
 }
 .btn-violet {
@@ -3490,8 +3490,8 @@ ul.list-icon {
 	}
 	&.disabled,&:disabled {
 		color:$white;
-		background-color: $purple_light_3;
-		border-color: $purple_light_3;
+		background-color: $red_light_3;
+		border-color: $red_light_3;
 	}
 }
 .btn-lime {
@@ -3771,7 +3771,7 @@ ul.list-icon {
 	}
 	&.disabled,&:disabled {
 		color:$white;
-		@include bg-linear-gradient(45deg,$red_light_3,$purple_light_3);
+		@include bg-linear-gradient(45deg,$red_light_3,$red_light_3);
 	}
 }
 .btn-gradient-secondary {
@@ -3825,7 +3825,7 @@ ul.list-icon {
 	}
 	&.disabled,&:disabled {
 		color:$white;
-		@include bg-linear-gradient(45deg,$dark,$purple_light_3);
+		@include bg-linear-gradient(45deg,$dark,$red_light_3);
 	}
 }
 .btn-gradient-pony {
@@ -3861,7 +3861,7 @@ ul.list-icon {
 	}
 	&.disabled,&:disabled {
 		color:$white;
-		@include bg-linear-gradient(45deg,$purple_light_3,$sun_light_3);
+		@include bg-linear-gradient(45deg,$red_light_3,$sun_light_3);
 	}
 }
 .btn-gradient-streaks {
@@ -3915,7 +3915,7 @@ ul.list-icon {
 	}
 	&.disabled,&:disabled {
 		color:$white;
-		@include bg-linear-gradient(45deg,$blue_light_3,$purple_light_3);
+		@include bg-linear-gradient(45deg,$blue_light_3,$red_light_3);
 	}
 }
 .btn-gradient-heaven {
@@ -3933,7 +3933,7 @@ ul.list-icon {
 	}
 	&.disabled,&:disabled {
 		color:$white;
-		@include bg-linear-gradient(45deg,$purple_light_3,$sky_light_3);
+		@include bg-linear-gradient(45deg,$red_light_3,$sky_light_3);
 	}
 }
 .btn-gradient-honey {
@@ -4258,8 +4258,8 @@ ul.list-icon {
 	}
 	&.disabled,&:disabled {
 		color:$white;
-		background-color: $purple_light_3;
-		border-color: $purple_light_3;
+		background-color: $red_light_3;
+		border-color: $red_light_3;
 	}
 }
 .btn-outline-violet {
@@ -4369,8 +4369,8 @@ ul.list-icon {
 	}
 	&.disabled,&:disabled {
 		color:$white;
-		background-color: $purple_light_3;
-		border-color: $purple_light_3;
+		background-color: $red_light_3;
+		border-color: $red_light_3;
 	}
 }
 .btn-outline-lime {
