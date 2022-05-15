@@ -48,6 +48,11 @@
   </head>
 
   <body>
+    <Preloader>
+      <div class="preloader-it">
+        <div class="loader-pendulums"></div>
+      </div>
+    </Preloader>
     <!-- HK Wrapper -->
     <div class="hk-wrapper hk-vertical-nav">
       <%- include('topbar'); -%> <%- include('sidebar'); -%>
@@ -137,6 +142,7 @@
                                 type="file"
                                 name="..."
                                 onchange="setFile(event)"
+                                id="postFile"
                               />
                             </span>
                             <a
@@ -155,16 +161,19 @@
                           name="title"
                           id="title"
                         />
-                        <input
+                        <textarea
                           required
                           class="form-control my-2"
                           placeholder="Enter description"
-                          type="text"
+                          rows="2"
                           name="description"
                           id="description"
-                        />
+                        ></textarea>
                       </div>
                       <div class="modal-footer">
+                        <div id="loader">
+                          <div class="loader-pendulums"></div>
+                        </div>
                         <button
                           type="button"
                           class="btn btn-secondary"

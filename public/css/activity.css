@@ -1,3 +1,12 @@
 #loadMore {
-    font-size: small;
+  font-size: small;
+}
+#loader {
+  width: 40px;
+  top: 15px;
+  position: relative;
+  display: none;
+}
+#loader .loader-pendulums {
+  font-size: 2rem;
 }

@@ -71,6 +71,7 @@ let postFile = null,
 
 async function handleSubmit() {
   if (checkValidation()) {
+    $("#loader").show();
     let resp = await uploadActivity(postFile);
     // console.log(resp);
     if (resp != null) {
@@ -87,6 +88,7 @@ async function handleSubmit() {
           resp +
           "&type=image", // serializes the form's elements.
         success: function (response) {
+          $("#loader").hide();
           if (response.OPstatus != -1) {
             getUserPosts(0);
             $.toast({
@@ -100,6 +102,9 @@ async function handleSubmit() {
               showHideTransition: "fade",
             });
             $("#createpostModal").modal("hide");
+            $("#title").val("");
+            $("#description").val("");
+            $("#postFile").val(null);
           } else {
             $.toast({
               heading: "error!",
@@ -114,6 +119,7 @@ async function handleSubmit() {
           }
         },
         error: function (error) {
+          $("#loader").hide();
           console.log(error);
           /*Toaster Alert*/
           $.toast({
@@ -223,7 +229,7 @@ function getUserPosts(pg) {
     type: "GET",
     url: "/activity/getuserposts/" + pg,
     success: function (response) {
-    //   console.log(response);
+      //   console.log(response);
       if (response.data.postLeftCount < 1) {
         $("#loadMore").prop("disabled", true);
         $("#loadMore").html("You are all caught up!");

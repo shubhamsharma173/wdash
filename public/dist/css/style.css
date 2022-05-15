@@ -12338,11 +12338,11 @@ ul.list-icon {
     border-color: #7fcdc1; }
 
 .btn-primary,
-.btn-purple {
+.btn-primary:focus, .btn-purple {
   color: #fff;
   background-color: #61CE70;
   border-color: #61CE70; }
-  .btn-primary:hover, .btn-primary:focus,
+  .btn-primary:hover, 
   .btn-purple:hover,
   .btn-purple:focus {
     color: #fff;
