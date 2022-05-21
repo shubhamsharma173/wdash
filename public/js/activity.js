@@ -152,9 +152,45 @@ async function handleSubmit() {
   }
 }
 
+function getExtension(filename) {
+  var parts = filename.split(".");
+  return parts[parts.length - 1];
+}
+
+function isImage(filename) {
+  var ext = getExtension(filename);
+  switch (ext.toLowerCase()) {
+    case "jpg":
+    case "gif":
+    case "bmp":
+    case "png":
+      //etc
+      return true;
+  }
+  return false;
+}
+
 async function setFile(e) {
   let file = e.target.files[0];
-  postFile = typeof file != "undefined" ? file : null;
+  if (typeof file != "undefined") {
+    if (isImage(file.name)) {
+      postFile = file;
+    } else {
+      $.toast({
+        heading: "Oops!",
+        text: "<p>Format of image seems wrong, we're supporting jpg, gif, bmp & png. Please try again.</p>",
+        position: "top-right",
+        loaderBg: "#F46B68",
+        class: "jq-toast-danger",
+        hideAfter: 10000,
+        stack: 6,
+        showHideTransition: "fade",
+      });
+      postFile = null;
+    }
+  } else {
+    postFile = null;
+  }
 }
 
 function getUserInfo() {
@@ -188,7 +224,7 @@ function checkValidation() {
   if (postFile == null) {
     $.toast({
       heading: "Error!",
-      text: "<p>Please upload file.</p>",
+      text: "<p>Please upload an image file.</p>",
       position: "top-right",
       loaderBg: "#F46B68",
       class: "jq-toast-danger",
