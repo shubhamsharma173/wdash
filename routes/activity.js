@@ -84,25 +84,25 @@ router.post("/savepost", (req, res) => {
 
 router.post("/addlike", (req, res) => {
   if (req.isAuthenticated()) {
-    const { url } = req.body;
-    UserPostModal.findOne({ url }, (err, doc) => {
+    const { _id, userId } = req.body;
+    UserPostModal.findOne({ _id }, (err, doc) => {
       if (err) res.send({ OPstatus: -1, data: err });
       else {
         if (doc != null) {
           UserPostModal.findOneAndUpdate(
-            { url },
+            { _id },
             { like: doc.like + 1 },
             { new: true },
             (error, newdoc) => {
               if (error) res.send({ OPstatus: -1, data: error });
               else {
                 Member.findOneAndUpdate(
-                  { _id: req.user._id },
-                  { $push: { Userlikedpost: url } },
+                  { _id: userId },
+                  { $push: { Userlikedpost: "" + _id } },
                   { new: true },
                   (err2, doc2) => {
                     if (err2) res.send({ OPstatus: -1, data: err2 });
-                    else res.send({ OPstatus: 1, data: "success" });
+                    else res.send({ OPstatus: 1, data: "Post liked." });
                   }
                 );
               }
@@ -120,25 +120,25 @@ router.post("/addlike", (req, res) => {
 
 router.post("/dislike", (req, res) => {
   if (req.isAuthenticated()) {
-    const { url } = req.body;
-    UserPostModal.findOne({ url }, (err, doc) => {
+    const { _id, userId } = req.body;
+    UserPostModal.findOne({ _id }, (err, doc) => {
       if (err) res.send({ OPstatus: -1, data: err });
       else {
         if (doc != null) {
           UserPostModal.findOneAndUpdate(
-            { url },
+            { _id },
             { like: doc.like - 1 },
             { new: true },
             (error, newdoc) => {
               if (error) res.send({ OPstatus: -1, data: error });
               else {
                 Member.findOneAndUpdate(
-                  { _id: req.user._id },
-                  { $pull: { Userlikedpost: url } },
+                  { _id: userId },
+                  { $pull: { Userlikedpost: "" + _id } },
                   { new: true },
                   (err2, doc2) => {
                     if (err2) res.send({ OPstatus: -1, data: err2 });
-                    else res.send({ OPstatus: 1, data: "success" });
+                    else res.send({ OPstatus: 1, data: "Removed like from Post." });
                   }
                 );
               }
