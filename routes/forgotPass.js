@@ -39,7 +39,7 @@ router.post("/", (req, res) => {
         const data = {
           today: today,
           userId: usr._id,
-          lastLogin: usr.lastLogin.toISOString(),
+          lastLogin: usr?.lastLogin?.toISOString(),
           password: usr.salt,
           email: usr.username,
         };
@@ -104,7 +104,7 @@ router.get("/password-change/:ident/:today-:hash", (req, res) => {
       const data = {
         today: req.params.today,
         userId: account._id,
-        lastLogin: account.lastLogin.toISOString(),
+        lastLogin: account?.lastLogin?.toISOString(),
         password: account.salt,
         email: account.username,
       };
@@ -151,7 +151,7 @@ router.post("/reset/:ident/:today-:hash", (req, res) => {
         const data = {
           today: req.params.today,
           userId: account._id,
-          lastLogin: account.lastLogin.toISOString(),
+          lastLogin: account?.lastLogin?.toISOString(),
           password: account.salt,
           email: account.username,
         };
